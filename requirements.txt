@@ -1,6 +1,7 @@
 asgiref==3.7.2
 autopep8==2.0.4
 Django==5.0
+django-environ==0.11.2
 django-quill-editor==0.1.40
 gunicorn==21.2.0
 packaging==23.2
