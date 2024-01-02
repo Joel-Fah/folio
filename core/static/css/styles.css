@@ -210,6 +210,11 @@ header {
         max-width: unset;
         padding: 0 15px !important;
     }
+
+    .outer-container {
+        max-width: unset;
+        padding: 0 15px !important;
+    }
 }
 
 @media screen and (max-width: 768px) {
