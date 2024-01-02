@@ -158,6 +158,11 @@ header {
     display: flex;
     align-items: flex-start;
     gap: 20px;
+
+    span {
+        color: rgb(255, 255, 255, .5);
+        cursor: not-allowed;
+    }
 }
 
 .navbar .nav-links a {
@@ -190,6 +195,20 @@ header {
     .navbar {
         flex-direction: column;
         gap: 10px;
+        align-items: flex-start;
+        max-height: 45px;
+        overflow: hidden;
+    }
+
+    .navbar .nav-links {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 20px;
+    }
+
+    .outer-container {
+        max-width: unset;
+        padding: 0 15px !important;
     }
 
     .outer-container {
