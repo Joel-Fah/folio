@@ -1,3 +1,3 @@
 # **Folio**
 
-For this long, I've Designed user-friendly interfaces, Developed web apps, and learned to build mobile apps the flutter way.
+Joël Fah is a UI designer, community enthusiast, and computer science student who loves making screen magic one pixel after the other and technology to make a positive impact on the world. He's skilled in UI/UX design and likes contributing to open source projects. In his spare time, he speaks at meetups and conferences, and helps others learn and grow. He's excited to use his skills to make the future a better place, one community at a time.
