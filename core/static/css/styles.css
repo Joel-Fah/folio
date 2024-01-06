@@ -202,7 +202,7 @@ header {
     h2 {
         font-size: 20px;
     }
-
+    
     h3 {
         font-size: 18px;
     }
@@ -262,7 +262,6 @@ header {
 }
 
 @media screen and (max-width: 425px) {
-
     .hero,
     .works,
     .about {
@@ -615,7 +614,6 @@ header {
 @media screen and (max-width: 425px) {
     .about .about-img {
         width: 100% !important;
-
         img {
             width: inherit;
         }
@@ -635,7 +633,6 @@ header {
     .about .about-img {
         width: 85%;
         text-align: center;
-
         img {
             width: inherit;
             float: initial;
