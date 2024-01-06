@@ -108,7 +108,7 @@ DATABASES = {
     #     'NAME': BASE_DIR / 'db.sqlite3',
     # },
     
-    'default': {
+    'default' if not DEBUG else 'dev': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': env("NAME"), 
         'USER': env("USER"),
@@ -118,7 +118,7 @@ DATABASES = {
     }
 }
 
-DATABASES['production'] = dj_database_url.parse(env("DATABASE_URL"))
+DATABASES['production' if DEBUG else 'default'] = dj_database_url.parse(env("DATABASE_URL"))
 
 
 # Password validation
