@@ -119,8 +119,6 @@ DATABASES = {
 }
 
 DATABASES['production' if DEBUG == False else 'default'] = dj_database_url.parse(env("DATABASE_URL"))
-
-print('DEBUG', DEBUG)
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
