@@ -24,6 +24,8 @@
 /* General */
 * {
     box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
     font: inherit;
     color: inherit;
 }
@@ -41,7 +43,9 @@ body {
     color: var(--light-color);
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     font-weight: bold;
     margin: 0;
     padding: 0;
@@ -50,7 +54,8 @@ h1, h2, h3 {
 h1 {
     font-size: 50px;
     font-weight: 700;
-    line-height: 65px; /* 130% */
+    line-height: 65px;
+    /* 130% */
 }
 
 h2 {
@@ -70,6 +75,8 @@ a {
 a.social-link {
     color: var(--primary-color);
     transition: var(--transition);
+    -moz-transition: var(--transition);
+    -webkit-transition: var(--transition);
     font-weight: 500;
 }
 
@@ -87,6 +94,8 @@ a.btn {
     border-radius: 50px;
     background: var(--primary-color-10, rgba(206, 183, 250, 0.10));
     transition: var(--transition);
+    -moz-transition: var(--transition);
+    -webkit-transition: var(--transition);
 }
 
 a.btn-success {
@@ -104,10 +113,13 @@ a.btn-success:hover {
 a.btn i {
     font-size: x-large;
     transition: var(--transition);
+    -moz-transition: var(--transition);
+    -webkit-transition: var(--transition);
 }
 
 a.btn:hover {
     gap: 15px;
+
     i {
         color: var(--hover-color);
     }
@@ -126,13 +138,14 @@ header {
     background: rgba(36, 29, 59, 0.80);
     box-shadow: 0px 8px 50px 0px rgba(0, 0, 0, 0.30);
     backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     position: fixed;
     z-index: 999;
     width: 100%;
     padding: 0 30px;
 }
 
-.navbar { 
+.navbar {
     display: flex;
     gap: 100px;
     align-items: center;
@@ -167,6 +180,8 @@ header {
 
 .navbar .nav-links a {
     transition: var(--transition);
+    -moz-transition: var(--transition);
+    -webkit-transition: var(--transition);
 }
 
 .navbar .nav-links .nav-link.active {
@@ -187,7 +202,7 @@ header {
     h2 {
         font-size: 20px;
     }
-    
+
     h3 {
         font-size: 18px;
     }
@@ -247,6 +262,7 @@ header {
 }
 
 @media screen and (max-width: 425px) {
+
     .hero,
     .works,
     .about {
@@ -307,7 +323,7 @@ header {
 }
 
 .hero .hero-text .hero-actions,
-.about .about-text .hero-actions{
+.about .about-text .hero-actions {
     display: flex;
     align-items: flex-start;
     gap: 10px;
@@ -321,6 +337,7 @@ header {
 
 .hero .hero-img {
     width: 95%;
+
     img {
         width: inherit;
         float: right;
@@ -338,6 +355,7 @@ header {
 
     .hero .hero-img {
         width: 100% !important;
+
         img {
             width: inherit;
         }
@@ -368,6 +386,7 @@ header {
     .hero .hero-img {
         width: 85%;
         text-align: center;
+
         img {
             width: inherit;
             float: initial;
@@ -416,6 +435,8 @@ header {
         max-height: 450px;
         object-fit: cover;
         transition: var(--transition);
+        -moz-transition: var(--transition);
+        -webkit-transition: var(--transition);
         outline: 2px solid transparent;
     }
 
@@ -431,7 +452,9 @@ header {
         padding: 20px;
         overflow: hidden;
         transition: var(--transition);
-        
+        -moz-transition: var(--transition);
+        -webkit-transition: var(--transition);
+
         span {
             position: inherit;
             top: -20%;
@@ -439,6 +462,8 @@ header {
             padding: 10px 20px;
             border-radius: 50px;
             transition: var(--transition);
+            -moz-transition: var(--transition);
+            -webkit-transition: var(--transition);
         }
     }
 }
@@ -461,6 +486,7 @@ header {
         border-radius: 50px;
         scale: 1.02;
         background-color: rgb(12, 4, 38, .5);
+
         span {
             top: 20px;
         }
@@ -485,6 +511,8 @@ header {
     i {
         font-size: xx-large;
         transition: var(--transition);
+        -moz-transition: var(--transition);
+        -webkit-transition: var(--transition);
     }
 }
 
@@ -587,6 +615,7 @@ header {
 @media screen and (max-width: 425px) {
     .about .about-img {
         width: 100% !important;
+
         img {
             width: inherit;
         }
@@ -606,6 +635,7 @@ header {
     .about .about-img {
         width: 85%;
         text-align: center;
+
         img {
             width: inherit;
             float: initial;
@@ -630,6 +660,12 @@ header {
 }
 
 /* Footer */
+footer {
+    grid-column: 1 / -1;
+    padding: 30px 0;
+    max-width: 1200px;
+    margin: auto;
+}
 
 footer .container {
     display: flex;
@@ -649,13 +685,6 @@ footer p {
     span {
         color: var(--primary-color);
     }
-}
-
-footer {
-    grid-column: 1 / -1;
-    padding: 30px 0;
-    max-width: 1200px;
-    margin: auto;
 }
 
 footer .footer {
