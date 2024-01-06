@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /accounts/
+
+Sitemap: https://www.joelfah.onrender.com/sitemap.xml
+
+Crawl-delay: 5

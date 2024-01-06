@@ -1,0 +1,135 @@
+{% extends "base_old.html" %}
+{% load static %}
+
+{% block title %}
+  Home
+{% endblock title %}
+
+<!-- Body of the page -->
+{% block body %}
+<div class="outer-container">
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="container">
+            <div class="hero-text">
+                <div class="social-links">
+                    <a href="https://x.com/FahDejon" class="social-link">x.com</a>
+                    <a href="https://linkedin.com/in/joelfah" class="social-link">linkedin</a>
+                    <a href="https://figma.com/@joelfah" class="social-link">figma</a>
+                    <a href="https://behance.net/joelfah" class="social-link">behance</a>
+                </div>
+
+                <h1>
+                    I used to bring pixels together into the canvas and making it a beautiful place.
+                </h1>
+
+                <div class="name">
+                    <small>So, that's me</small>
+                    <span>Dejon Fah Joël Xavier</span>
+                    <span>aka Joel Fah</span>
+                </div>
+
+                <div class="hero-actions">
+                    <a href="#works" class="btn">
+                        Here for the projects
+                        <i class="iconoir-long-arrow-right-down"></i>
+                    </a>
+
+                    <a href="" class="btn btn-success">
+                        Available for work
+                        <i class="iconoir-bookmark-circle"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-img">
+                <img src="{% static './images/hero_img.png' %}"
+                    alt="Focus on Joel Fah at Google Developer Annual Summit 2023, Kigali, Rwanda">
+            </div>
+        </div>
+    </section>
+
+    <!-- Works Section -->
+    <section id="works" class="works">
+        <div class="heading">
+            <h2>View works</h2>
+            <hr>
+        </div>
+
+        <div class="work-list">
+            <a href="" class="work-list__item">
+                <div class="work-thumbnail">
+                    <img src="{% static './images/dribbble-shot.png' %}" alt="Vr-city website design thumbnail">
+
+                    <div><span>View project</span></div>
+                </div>
+
+                <div class="work-info">
+                    <div class="info">
+                        <div class="info-tags">
+                            <small>ux design</small>
+                            <small>web design</small>
+                            <small>ui design</small>
+                        </div>
+
+                        <h3>Vr-city Website Design</h3>
+                    </div>
+
+                    <i class="iconoir-arrow-up-right"></i>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-img">
+                <img src="{% static './images/about_img.png' %}"
+                    alt="Joel Fah at Google Developer Summit 2023 Kigali, Rwanda">
+            </div>
+
+
+            <div class="about-text">
+                <div class="about-heading">
+                    <h2>Talking of me</h2>
+                    <hr>
+                </div>
+
+                <div class="about-parargaphs">
+                    <p class="intro">
+                        Hey there! I'm <span>Joël Fah</span>, a creative mind with a knack for turning pixels into magic. By day,
+                        I'm your strategic designer weaving tales through visuals, and by night, I'm a pixel
+                        magician concocting artful wonders.
+                    </p>
+
+                    <p class="middle">
+                        My designer adventure started within community clubs where I volunteered. I mainly had to
+                        ensure a good visual communication. From there, I became very enthusiastic about communities
+                        and ui design, wanted more and now growing this satisfaction into a career that blends my
+                        lovely taste for tech and art.
+                    </p>
+
+                    <p class="outro">
+                        With a dash of wit, a sprinkle of creativity, and a dollop of professionalism, I bring
+                        design dreams to life. Let's create something extraordinary together!
+                    </p>
+                </div>
+
+                <div class="hero-actions">
+                    <a href="" class="btn">
+                        Let's get started on some stuff
+                        <i class="iconoir-send-mail"></i>
+                    </a>
+
+                    <!-- <a href="" class="btn btn-success">
+                        Available for work
+                        <i class="iconoir-bookmark-circle"></i>
+                    </a> -->
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock body %}
