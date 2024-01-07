@@ -8,16 +8,20 @@ Home
 
 <!-- Body of the page -->
 {% block body %}
-<div class="max-w-[95%] lg:max-w-[80%] h-[100vh] mx-auto grid-cols-12">
+<div class="max-w-[95%] lg:max-w-[80%] mx-auto grid-cols-12">
   <!-- Hero Section -->
-  <section id="hero" class="col-span-12 pb-5 lg:py-12 lg:pt-[80px] max-sm:pt-12">
+  <section id="hero" class="section col-span-12 pb-5 lg:py-12 lg:pt-[80px] max-sm:pt-12">
     <div class="flex flex-col lg:flex-row items-center justify-between gap-5 ld:gap-[100px]">
       <div class="flex flex-col items-center text-center lg:items-start lg:text-left gap-7">
         <div class="flex items-start gap-5">
-          <a href="https://x.com/FahDejon" class="text-primaryColor hover:text-hoverColor transition-all duration-300 ease-in-out font-medium">x.com</a>
-          <a href="https://linkedin.com/in/joelfah" class="text-primaryColor hover:text-hoverColor transition-all duration-300 ease-in-out font-medium">linkedin</a>
-          <a href="https://figma.com/@joelfah" class="text-primaryColor hover:text-hoverColor transition-all duration-300 ease-in-out font-medium">figma</a>
-          <a href="https://behance.net/joelfah" class="text-primaryColor hover:text-hoverColor transition-all duration-300 ease-in-out font-medium">behance</a>
+          <a href="https://x.com/FahDejon"
+            class="text-primaryColor hover:text-hoverColor transition-all duration-300 ease-in-out font-medium">x.com</a>
+          <a href="https://linkedin.com/in/joelfah"
+            class="text-primaryColor hover:text-hoverColor transition-all duration-300 ease-in-out font-medium">linkedin</a>
+          <a href="https://figma.com/@joelfah"
+            class="text-primaryColor hover:text-hoverColor transition-all duration-300 ease-in-out font-medium">figma</a>
+          <a href="https://behance.net/joelfah"
+            class="text-primaryColor hover:text-hoverColor transition-all duration-300 ease-in-out font-medium">behance</a>
         </div>
 
         <h1 class="font-medium m-0 p-0 text-3xl lg:text-[50px] md:leading-[65px]">
@@ -26,17 +30,22 @@ Home
 
         <div class="flex flex-col items-center lg:items-start">
           <small>So, that's me</small>
-          <span class="text-4xl m-0 font-semibold text-primaryColor my-2.5 lg:text-[60px] lg:leading-[50px]">Dejon Fah Joël Xavier</span>
-          <span class="text-3xl max-sm:-m-3 font-extralight text-primaryColor my-2.5 lg:text-[60px] lg:leading-[50px]">aka Joel Fah</span>
+          <span class="text-4xl m-0 font-semibold text-primaryColor my-2.5 lg:text-[60px] lg:leading-[50px]">Dejon Fah
+            Joël Xavier</span>
+          <span
+            class="text-3xl max-sm:-m-3 font-extralight text-primaryColor my-2.5 lg:text-[60px] lg:leading-[50px]">aka
+            Joel Fah</span>
         </div>
 
         <div class="flex flex-col md:flex-row items-center gap-5">
-          <a href="#works" class="flex flex-row-reverse py-5 px-7 items-center justify-center gap-2 font-medium rounded-full bg-primaryColor/10 ease-in-out duration-300 hover:gap-4">
+          <a href="#works"
+            class="flex flex-row-reverse py-5 px-7 items-center justify-center gap-2 font-medium rounded-full bg-primaryColor/10 ease-in-out duration-300 hover:gap-4">
             Here for the projects
             <i class="iconoir-long-arrow-right-down text-2xl"></i>
           </a>
 
-          <a href="" class="flex flex-row-reverse py-5 px-7 items-center justify-center gap-2 font-medium rounded-full text-greenSuccess bg-greenSuccess/10 ease-in-out duration-300 hover:gap-4">
+          <a href="mailto:joelfah2003@gmail.com"
+            class="flex flex-row-reverse py-5 px-7 items-center justify-center gap-2 font-medium rounded-full text-greenSuccess bg-greenSuccess/10 ease-in-out duration-300 hover:gap-4">
             Available for work
             <i class="iconoir-bookmark-circle text-2xl"></i>
           </a>
@@ -51,13 +60,89 @@ Home
   </section>
 
   <!-- Works Section -->
-  <section id="works" class="col-span-12 py-5 md:py-12">
-    <div class=""></div>
+  <section id="works" class="section col-span-12 py-5 md:py-12">
+    <div class="flex items-center gap-5 justify-between my-7">
+      <h2 class="font-bold m-0 p-0 whitespace-nowrap text-2xl lg:text-4xl">View works</h2>
+      <hr class="w-full border-yellowWhite/50">
+    </div>
+
+    <div
+      class="flex flex-col lg:flex-row items-center lg:items-start content-center lg:content-start justify-between flex-wrap ">
+      <a href=""
+        class="group basis-full lg:basis-1/2 max-md:shrink-0 w-full flex flex-col items-start p-0 md:p-2.5">
+        <div class="w-full relative">
+          <img
+            class="w-full min-h-[300px] max-h-[350px] lg:max-h-[450px] object-cover transition-all duration-300 ease-in-out outline-2 outline-transparent group-hover:rounded-[50px] group-hover:scale-[1.02] group-hover:outline-2 group-hover:outline-primaryColor group-hover:shadow-[0_0_30px_rgb(206,183,250,0.2)]"
+            src="{% static './images/dribbble-shot.png' %}" alt="Vr-city website design thumbnail">
+
+          <div
+            class="absolute top-0 bottom-0 right-0 left-0 flex items-start justify-end p-5 overflow-hidden transition-all duration-300 ease-in-out group-hover:rounded-[50px] group-hover:scale-[1.02] group-hover:bg-[rgb(12,4,38,0.5)]">
+            <span
+              class="absolute -top-[20%] bg-hoverColor py-2.5 px-5 rounded-full transition-all duration-300 ease-in-out group-hover:top-5">View
+              project</span>
+          </div>
+        </div>
+
+        <div class="flex py-6 items-center justify-between w-full">
+          <div class="info flex flex-col gap-4 w-full">
+
+            <div class="flex items-start gap-2.5">
+              <small class="line-clamp-1 md:line-clamp-none text-sm text-primaryColor py-[3px] px-4 rounded-lg bg-primaryColor/10">ux design</small>
+              <small class="line-clamp-1 md:line-clamp-none text-sm text-primaryColor py-[3px] px-4 rounded-lg bg-primaryColor/10">web design</small>
+              <small class="line-clamp-1 md:line-clamp-none text-sm text-primaryColor py-[3px] px-4 rounded-lg bg-primaryColor/10">ui design</small>
+            </div>
+
+            <h3 class="font-medium m-0 p-0 text-lg lg:text-2xl">Vr-city Website Design</h3>
+          </div>
+
+          <i
+            class="iconoir-arrow-up-right text-3xl transition-all duration-300 ease-in-out group-hover:text-primaryColor group-hover:scale-[1.3] group-hover:rotate-45"></i>
+        </div>
+      </a>
+    </div>
   </section>
 
   <!-- About Section -->
-  <section id="about" class="col-span-12 py-5 md:py-12">
-    <div class=""></div>
+  <section id="about" class="section col-span-12 py-5 md:py-12">
+    <div class="flex flex-col-reverse gap-5 lg:flex-row items-center justify-between ld:gap-[100px]">
+      <div class="w-[95%] mx-auto max-md:w-[85%] max-md:text-center">
+        <img class="w-4/5 lg:w-3/5 mx-auto lg:float-start" src="{% static './images/about_img.png' %}" alt="Joel Fah at Google Developer Summit 2023 Kigali, Rwanda">
+      </div>
+
+
+      <div class="flex flex-col items-start gap-5 w-full">
+        <div class="flex items-center gap-5 justify-between my-2.5 lg:my-7 mx-0 w-full">
+          <h2 class="font-bold m-0 p-0 whitespace-nowrap text-2xl lg:text-4xl">Talking of me</h2>
+          <hr class="w-full border-yellowWhite/50">
+        </div>
+
+        <div class="flex flex-col gap-5">
+          <p class="text-xl lg:text-2xl font-medium leading-7 lg:leading-9">
+            Hey there! I'm <span class="bg-yellowWhite/10 mx-1 px-2 py-0.5 rounded-md text-primaryColor">@joelfah</span>, a creative mind with a knack for turning pixels into magic. By day, I'm your strategic designer weaving tales through visuals, and by night, I'm a pixel
+            magician concocting artful wonders.
+          </p>
+
+          <p class="text-lg lgtext-xl leading-6 lg:leading-8">
+            My adventure started within community clubs volunteership. I mainly had to
+            ensure a good visual <span class="bg-yellowWhite/10 mx-1 px-2 py-0.5 rounded-md text-primaryColor">communication</span>. From there, I became very enthusiastic about <span class="bg-yellowWhite/10 mx-1 px-2 py-0.5 rounded-md text-primaryColor">communities</span>
+            and <span class="bg-yellowWhite/10 mx-1 px-2 py-0.5 rounded-md text-primaryColor">ui design</span>, wanted more and now growing this satisfaction into a career that blends my
+            lovely taste for tech and art.
+          </p>
+
+          <p class="text-sm lg:text-lg font-thin leading-5 lg:leading-7">
+            With a dash of wit, a sprinkle of creativity, and a dollop of professionalism, I bring
+            design dreams to life. Let's create something extraordinary together!
+          </p>
+        </div>
+
+        <div class="">
+          <a href="mailto:joelfah2003@gmail.com" class="flex flex-row-reverse py-5 px-7 items-center justify-center gap-2 font-medium rounded-full bg-primaryColor/10 ease-in-out duration-300 hover:gap-4">
+            Let's get started on some stuff
+            <i class="iconoir-send-mail text-2xl"></i>
+          </a>
+        </div>
+      </div>
+    </div>
   </section>
 </div>
 {% endblock body %}

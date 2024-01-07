@@ -61,13 +61,13 @@
 
 <body class="bg-darkBlue text-yellowWhite font-['urbanist'] text-lg">
     <!-- Header Section -->
-    <header class="flex items-center justify-center w-full bg-navbarBarBg/80 text-sm fixed z-20 top-0 start-0 backdrop-blur-md px-7 max-sm:px-1 shadow-xl">
+    <header class="flex items-center justify-center w-full bg-navbarBarBg/80 text-sm fixed z-20 top-0 start-0 backdrop-blur-md px-7 py-1 max-sm:px-1 shadow-xl">
         <nav
             class="w-full">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-center gap-24 max-sm:gap-0 mx-auto max-sm:justify-between">
-                <a href="" class="flex items-center rtl:space-x-reverse">
-                    <img src="{% static './images/logo_jf-trans.png' %}" class="w-9 h-9 mt-1" alt="Logo Joel Fah">
-                    <svg class="w-full h-7 max-sm:h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 39 19"
+                <a href="" class="flex items-center justify-center rtl:space-x-reverse">
+                    <img src="{% static './images/logo_jf-trans.png' %}" class="w-9 h-9" alt="Logo Joel Fah">
+                    <svg class="w-full h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 39 19"
                         fill="none">
                         <path
                             d="M4.66002 6.05992H4.98002L4.92002 13.6999V15.6199L4.90002 16.8599L3.92002 17.2199L3.34002 17.4399L2.34002 17.7999L2.30002 17.6999L1.18002 18.1799L1.04002 17.8599L2.18002 17.3799V17.3599L1.04002 17.7599L0.800018 17.1199L0.900018 17.0799L0.600018 17.0999L0.300018 9.91992L0.880018 9.89992L0.940018 10.3199V9.69992H1.64002V10.1199H2.02002V16.0399L2.28002 15.9399L3.02002 15.6999L3.10002 15.6599H3.16002V15.6399H3.20002C3.20002 15.6399 3.20669 15.6333 3.22002 15.6199V15.4799L3.24002 14.7399L3.30002 13.2599L3.40002 10.3199H3.36002L3.28002 6.05992L0.560018 5.97992V5.11992H0.640018V4.51992L4.82002 4.43992V5.01992L4.90002 5.03992V5.25992H4.44002L4.68002 5.33992H4.72002V5.35992L4.88002 5.39992V5.89992L4.68002 5.87992L4.66002 6.05992Z"
@@ -100,30 +100,40 @@
                       </svg>
                   </button>
                 </div>
-                {% with url_name=request.resolver_match.url_name %}
                 <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
                     <ul
-                        class="flex flex-row p-4 md:p-0 mt-4 font-medium md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 max-sm:items-center max-sm:justify-center max-sm:gap-3">
+                        class="flex flex-row p-4 md:p-0 mt-4 font-medium md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 items-center justify-between max-sm:gap-2">
                         <li>
-                            <a href="#"
-                                class="max-sm:p-1 max-sm:rounded-md max-sm:px-2 {% if url_name == 'home' %} max-sm:ring max-sm:bg-hoverColor/10 {% else %} {% endif %} block px-3 font-medium {% if url_name == 'home' %} text-primaryColor {% else %} text-yellowWhite hover:text-hoverColor {% endif %} md:p-0 transition-all duration-300 ease-in-out"
-                                aria-current="page">✌🏽️ Hello</a>
+                            <a href="#hero"
+                                class="max-sm:whitespace-nowrap block ring bg-hoverColor/10 font-medium rounded-md md:ring-0 md:text-primaryColor md:outline md:outline-1 md:outline-primaryColor px-3 py-1.5 md:py-1 transition-all duration-300 ease-in-out"
+                                aria-current="page">
+                                ✌🏽️ Hello
+                            </a>
                         </li>
                         <li>
-                            <a href="#"
-                                class="max-sm:p-1 max-sm:rounded-md max-sm:px-2 {% if url_name == 'about' %} max-sm:ring max-sm:bg-hoverColor/10 {% else %} {% endif %} block px-3 font-medium {% if url_name == 'about' %} text-primaryColor {% else %} text-yellowWhite hover:text-hoverColor {% endif %} md:p-0 transition-all duration-300 ease-in-out">About</a>
+                            <a href="#works"
+                                class="max-sm:whitespace-nowrap block max-sm:text-yellowWhite/70 rounded-md md:ring-0 bg-transparent md:hover:text-yellowWhite/70 md:hover:bg-yellowWhite/10 md:py-1 md:outline md:outline-1 md:outline-transparent px-3 py-1.5  transition-all duration-300 ease-in-out">
+                                ✊🏽 Works
+                            </a>
                         </li>
                         <li>
-                            <a href="#"
-                                class="max-sm:p-1 max-sm:rounded-md max-sm:px-2 {% if url_name == 'connect' %} max-sm:ring max-sm:bg-hoverColor/10 {% else %} {% endif %} block px-3 font-medium {% if url_name == 'connect' %} text-primaryColor {% else %} text-yellowWhite hover:text-hoverColor {% endif %} md:p-0 transition-all duration-300 ease-in-out">Connect</a>
+                            <a href="#about"
+                                class="max-sm:whitespace-nowrap block max-sm:text-yellowWhite/70 rounded-md md:ring-0 bg-transparent md:hover:text-yellowWhite/70 md:hover:bg-yellowWhite/10 md:py-1 md:outline md:outline-1 md:outline-transparent px-3 py-1.5  transition-all duration-300 ease-in-out">
+                                🖐🏽 About
+                            </a>
                         </li>
                         <li>
+                            <a href="#footer"
+                                class="max-sm:whitespace-nowrap block max-sm:text-yellowWhite/70 rounded-md md:ring-0 bg-transparent md:hover:text-yellowWhite/70 md:hover:bg-yellowWhite/10 md:py-1 md:outline md:outline-1 md:outline-transparent px-3 py-1.5  transition-all duration-300 ease-in-out">
+                                🤙🏽 Connect
+                            </a>
+                        </li>
+                        <!-- <li>
                             <span
-                                class="max-sm:p-1 max-sm:rounded-md max-sm:px-2 {% if url_name == 'community' %} max-sm:ring max-sm:bg-hoverColor/10 {% else %} {% endif %} block px-3 font-medium {% if url_name == 'community' %} text-primaryColor {% else %} text-yellowWhite/50 hover:text-hoverColor {% endif %} md:p-0 transition-all duration-300 ease-in-out pointer-events-none cursor-not-allowed">🔒 Community</span>
-                        </li>
+                                class="text-yellowWhite/50 max-sm:p-1 max-sm:rounded-md max-sm:px-2 {% if url_name == 'community' %} max-sm:ring max-sm:bg-hoverColor/10 {% else %} {% endif %} block px-3 font-medium md:p-0 transition-all duration-300 ease-in-out pointer-events-none cursor-not-allowed">🔒 Community</span>
+                        </li> -->
                     </ul>
                 </div>
-                {% endwith %}
             </div>
         </nav>
     </header>
@@ -136,9 +146,9 @@
     </main>
 
     <!-- Footer Section -->
-    <footer id="footer" class="max-w-screen-xl mx-auto py-3 max-md:px-4 max-lg:px-8 max-xl:px-12">
+    <footer id="footer" class="section h-dvh max-w-screen-xl mx-auto py-3 max-md:px-4 max-lg:px-8 max-xl:px-12 flex flex-col items-center justify-evenly">
         <div class="flex flex-col gap-10 items-center justify-center pt-20 pb-12">
-            <a href=""
+            <a href="mailto:joelfah2003@gmail.com"
                 class="flex flex-row-reverse py-5 px-7 items-center justify-center gap-2 font-medium rounded-full text-greenSuccess bg-greenSuccess/10 ease-in-out duration-300 hover:gap-4">
                 Available for work
                 <i class="iconoir-bookmark-circle text-2xl"></i>
@@ -150,31 +160,35 @@
                 And let's build something <span class="font-medium text-primaryColor">great</span> together
             </p>
 
-            <a href=""
+            <a href="mailto:joelfah2003@gmail.com"
                 class="flex flex-row-reverse py-5 px-7 items-center justify-center gap-2 font-medium rounded-full bg-primaryColor/10 ease-in-out duration-300 hover:gap-4">
                 joelfah2003@gmail.com
                 <i class="iconoir-send-mail text-2xl"></i>
             </a>
         </div>
 
-        <hr class="w-full border-yellowWhite/50">
-
-        <div class="flex flex-col md:flex-row items-center justify-center md:justify-between py-4">
-            <small class="font-extralight">
-                ©2023 - designed and dev-ed by joelfah
-            </small>
-
-            <small class="flex gap-5 text-primaryColor">
-                <a href="https://x.com/FahDejon" class="ease-in-out duration-300 hover:text-hoverColor">x.com</a>
-                <a href="https://linkedin.com/in/joelfah"
-                    class="ease-in-out duration-300 hover:text-hoverColor">linkedin</a>
-                <a href="https://figma.com/@joelfah" class="ease-in-out duration-300 hover:text-hoverColor">figma</a>
-                <a href="https://behance.net/joelfah" class="ease-in-out duration-300 hover:text-hoverColor">behance</a>
-            </small>
+        <div class="w-full">
+            <hr class="w-full border-yellowWhite/50">
+            <div class="flex flex-col md:flex-row items-center justify-center md:justify-between py-4">
+                <small class="font-extralight">
+                    ©2023 - designed and dev-ed by joelfah
+                </small>
+                <small class="flex gap-5 text-primaryColor">
+                    <a href="https://x.com/FahDejon" class="ease-in-out duration-300 hover:text-hoverColor">x.com</a>
+                    <a href="https://linkedin.com/in/joelfah"
+                        class="ease-in-out duration-300 hover:text-hoverColor">linkedin</a>
+                    <a href="https://figma.com/@joelfah" class="ease-in-out duration-300 hover:text-hoverColor">figma</a>
+                    <a href="https://behance.net/joelfah" class="ease-in-out duration-300 hover:text-hoverColor">behance</a>
+                </small>
+            </div>
         </div>
     </footer>
 
+    <!-- Flowbite JS script -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+
+    <!-- Main JS -->
+    <script src="{% static './js/main.js' %}"></script>
 </body>
 
 </html>
