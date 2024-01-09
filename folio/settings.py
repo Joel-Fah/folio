@@ -120,6 +120,9 @@ DATABASES = {
 
 DATABASES['prod'] = dj_database_url.parse(env("DATABASE_URL"))
 
+if env("DEBUG") == False:
+    DATABASES['default'] = dj_database_url.parse(env("DATABASE_URL"))
+
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
