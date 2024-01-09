@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static tailwind_tags %}
+{% load static %}
+
+<!-- Titile of the page -->
+{% block title %}
+  {{ object.name }}
+{% endblock title %}
+
+<!-- Body of the page -->
+{% block body %}
+  <div class="container max-w-screen-xl mx-auto my-20">
+    {{ object.content|safe }}
+  </div>
+{% endblock body %}
