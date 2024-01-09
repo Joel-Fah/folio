@@ -108,7 +108,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     },
     
-    'dev': {
+    'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': env("NAME"), 
         'USER': env("USER"),
@@ -117,6 +117,8 @@ DATABASES = {
         'PORT': env("PORT"),
     }
 }
+
+DATABASES['prod'] = dj_database_url.parse(env("DATABASE_URL"))
 
 if not DEBUG:
     DATABASES['default'] = dj_database_url.parse(env("DATABASE_URL"))
