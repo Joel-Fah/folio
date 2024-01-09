@@ -11,7 +11,7 @@ class Project(models.Model):
     client = models.CharField(max_length = 150)
     role = models.CharField(max_length = 150)
     link = models.URLField(max_length = 200, blank=True, null=True)
-    thumbnail = models.ImageField(upload_to='media/thumbnails/')
+    thumbnail = models.ImageField(upload_to='thumbnails/')
     
     started_at = models.DateTimeField(auto_now=False, auto_now_add=False)
     ended_at = models.DateTimeField(auto_now=False, auto_now_add=False)
