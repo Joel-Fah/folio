@@ -12,16 +12,11 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
-import environ
-import dj_database_url
-
-env = environ.Env()
 
 # Set the project base directory
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Take environment variables from .env file
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,14 +24,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env("SECRET_KEY")
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env("DEBUG")
-
-ALLOWED_HOSTS = env("ALLOWED_HOSTS").split(" ")
 
 
 # Application definition
@@ -52,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     
     'core',
-    'django_quill',
+    'tinymce',
     'tailwind',
     'theme',
     'django_browser_reload',
@@ -98,27 +85,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'folio.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
-DATABASES = {
-    # 'dev_sqlite': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # },
-    
-    'default' if DEBUG == True else 'dev': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': env("NAME"), 
-        'USER': env("USER"),
-        'PASSWORD': env("PASSWORD"),
-        'HOST': env("HOST"), 
-        'PORT': env("PORT"),
-    }
-}
-
-DATABASES['production' if DEBUG == False else 'default'] = dj_database_url.parse(env("DATABASE_URL"))
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
@@ -156,7 +122,7 @@ USE_TZ = True
 STATIC_URL = 'theme/static/'
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR / 'core/static/')
+    os.path.join('core/static/')
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
@@ -169,8 +135,31 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Add compression and caching support for whitenoise
 STORAGES = {
-    # ...
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
+
+# TinyMCE
+TINYMCE_JS_URL = 'https://cdn.tiny.cloud/1/0ojmoo0qismstx45fnfsegx4ghvjn89ikerl6eqnb76r291b/tinymce/5/tinymce.min.js'
+TINYMCE_COMPRESSOR = False
+SECURE_REFERRER_POLICY = 'origin'
+TINYMCE_DEFAULT_CONFIG = {
+    "height": "500px",
+    # "width": "960px",
+    'theme': "silver",
+    "menubar": "file edit view insert format tools table help",
+    "plugins": "advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code "
+    "fullscreen insertdatetime media table paste code help wordcount spellchecker",
+    "toolbar": "undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft "
+    "aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist | forecolor "
+    "backcolor casechange permanentpen formatpainter removeformat | pagebreak | charmap emoticons | "
+    "fullscreen  preview save print | insertfile image media pageembed template link anchor codesample | "
+    "a11ycheck ltr rtl | showcomments addcomment code",
+    "custom_undo_redo_levels": 10,
+    "language": "en_US",  # To force a specific language instead of the Django current language.
+}
+TINYMCE_SPELLCHECKER = True

@@ -1,20 +1,30 @@
 from django.db import models
-from django_quill.fields import QuillField
+from tinymce import models as tinymce_models
+from slugify import slugify
 
 # Create your models here.
 
 class Project(models.Model):
+    content = tinymce_models.HTMLField()
+    
     name = models.CharField(max_length = 150, blank=False, null=False)
-    content = QuillField()
     client = models.CharField(max_length = 150)
     role = models.CharField(max_length = 150)
-    link = models.URLField(max_length = 200)
+    link = models.URLField(max_length = 200, blank=True, null=True)
+    thumbnail = models.ImageField(upload_to='thumbnails/')
     
-    started_at = models.DateTimeField(auto_now=True, auto_now_add=False)
-    ended_at = models.DateTimeField(auto_now=True, auto_now_add=False)
+    started_at = models.DateTimeField(auto_now=False, auto_now_add=False)
+    ended_at = models.DateTimeField(auto_now=False, auto_now_add=False)
     
+    slug = models.SlugField(max_length = 200, default="", editable=False)
+    is_visible = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now=True, auto_now_add=False)
-    updated_at = models.DateTimeField(auto_now=True, auto_now_add=False)
+    updated_at = models.DateTimeField(auto_now=False, auto_now_add=False)
+
+    # Auto populate slug field from project name field
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
     
     def __str__(self):
         return self.name
@@ -22,6 +32,9 @@ class Project(models.Model):
 class Tag(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='projects')
     name = models.CharField(max_length = 150, blank=False, null=False)
+
+    created_at = models.DateTimeField(auto_now=True, auto_now_add=False)
+    updated_at = models.DateTimeField(auto_now=True, auto_now_add=False)
     
     def __str__(self):
         return self.name
