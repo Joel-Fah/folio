@@ -182,7 +182,7 @@ TINYMCE_JS_URL = 'https://cdn.tiny.cloud/1/0ojmoo0qismstx45fnfsegx4ghvjn89ikerl6
 TINYMCE_COMPRESSOR = False
 SECURE_REFERRER_POLICY = 'origin'
 TINYMCE_DEFAULT_CONFIG = {
-    "height": "320px",
+    "height": "500px",
     # "width": "960px",
     'theme': "silver",
     "menubar": "file edit view insert format tools table help",

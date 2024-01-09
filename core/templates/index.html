@@ -80,8 +80,9 @@ Home
           <div
             class="absolute top-0 bottom-0 right-0 left-0 flex items-start justify-end p-5 overflow-hidden transition-all duration-300 ease-in-out group-hover:rounded-[50px] group-hover:scale-[1.02] group-hover:bg-[rgb(12,4,38,0.5)]">
             <span
-              class="absolute -top-[20%] bg-hoverColor py-2.5 px-5 rounded-full transition-all duration-300 ease-in-out group-hover:top-5">View
-              project</span>
+              class="absolute -top-[20%] bg-hoverColor py-2.5 px-5 rounded-full transition-all duration-300 ease-in-out group-hover:top-5">
+              View project
+            </span>
           </div>
         </div>
 
@@ -92,7 +93,7 @@ Home
               {% for tag in tags %}
                 {% if project.name == tag.project.name %}
                 <small
-                class="line-clamp-1 md:line-clamp-none text-sm text-primaryColor py-[3px] px-4 rounded-lg bg-primaryColor/10">ux
+                class="line-clamp-1 md:line-clamp-none text-sm text-primaryColor py-[3px] px-4 rounded-lg bg-primaryColor/10">
                 {{ tag.name }}
                 </small>
                 {% endif %}
