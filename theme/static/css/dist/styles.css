@@ -841,6 +841,10 @@ select {
   margin: 0px;
 }
 
+.m-20 {
+  margin: 5rem;
+}
+
 .mx-0 {
   margin-left: 0px;
   margin-right: 0px;
@@ -876,8 +880,21 @@ select {
   margin-bottom: 1.75rem;
 }
 
+.my-20 {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+.mt-10 {
+  margin-top: 2.5rem;
+}
+
 .mt-4 {
   margin-top: 1rem;
+}
+
+.mt-20 {
+  margin-top: 5rem;
 }
 
 .line-clamp-1 {
