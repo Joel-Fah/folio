@@ -829,6 +829,10 @@ select {
   top: 0px;
 }
 
+.top-10 {
+  top: 2.5rem;
+}
+
 .z-20 {
   z-index: 20;
 }
@@ -839,10 +843,6 @@ select {
 
 .m-0 {
   margin: 0px;
-}
-
-.m-20 {
-  margin: 5rem;
 }
 
 .mx-0 {
@@ -880,21 +880,12 @@ select {
   margin-bottom: 1.75rem;
 }
 
-.my-20 {
-  margin-top: 5rem;
-  margin-bottom: 5rem;
-}
-
-.mt-10 {
-  margin-top: 2.5rem;
-}
-
 .mt-4 {
   margin-top: 1rem;
 }
 
-.mt-20 {
-  margin-top: 5rem;
+.mt-\[50\%\] {
+  margin-top: 50%;
 }
 
 .line-clamp-1 {
@@ -938,6 +929,10 @@ select {
 
 .h-dvh {
   height: 100dvh;
+}
+
+.h-full {
+  height: 100%;
 }
 
 .h-screen {
@@ -986,6 +981,11 @@ select {
 
 .basis-full {
   flex-basis: 100%;
+}
+
+.rotate-45 {
+  --tw-rotate: 45deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .cursor-not-allowed {
@@ -1145,6 +1145,10 @@ select {
   background-color: rgb(250 241 214 / 0.1);
 }
 
+.bg-\[linear-gradient\(180deg\2c rgba\(12\2c 4\2c 38\2c 0\.00\)_0\%\2c \#0C0426_37\.2\%\)\] {
+  background-image: linear-gradient(180deg,rgba(12,4,38,0.00) 0%,#0C0426 37.2%);
+}
+
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
@@ -1189,6 +1193,11 @@ select {
 .px-7 {
   padding-left: 1.75rem;
   padding-right: 1.75rem;
+}
+
+.px-\[10\%\] {
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 .py-0 {
@@ -1373,6 +1382,10 @@ select {
   color: rgb(250 241 214 / 0.5);
 }
 
+.opacity-40 {
+  opacity: 0.4;
+}
+
 .shadow-xl {
   --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
@@ -1405,6 +1418,16 @@ select {
   transition-duration: 150ms;
 }
 
+.transition-opacity {
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.duration-1000 {
+  transition-duration: 1000ms;
+}
+
 .duration-300 {
   transition-duration: 300ms;
 }
@@ -1424,6 +1447,10 @@ select {
 .hover\:text-hoverColor:hover {
   --tw-text-opacity: 1;
   color: rgb(45 78 245 / var(--tw-text-opacity));
+}
+
+.hover\:opacity-100:hover {
+  opacity: 1;
 }
 
 .group:hover .group-hover\:top-5 {
@@ -1497,6 +1524,10 @@ select {
     flex-shrink: 0;
   }
 
+  .max-md\:overflow-hidden {
+    overflow: hidden;
+  }
+
   .max-md\:px-4 {
     padding-left: 1rem;
     padding-right: 1rem;
@@ -1510,6 +1541,10 @@ select {
 @media not all and (min-width: 640px) {
   .max-sm\:-m-3 {
     margin: -0.75rem;
+  }
+
+  .max-sm\:h-\[30\%\] {
+    height: 30%;
   }
 
   .max-sm\:justify-between {
@@ -1554,6 +1589,11 @@ select {
     padding-top: 3rem;
   }
 
+  .max-sm\:text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
   .max-sm\:text-yellowWhite\/70 {
     color: rgb(250 241 214 / 0.7);
   }
@@ -1566,6 +1606,10 @@ select {
 }
 
 @media (min-width: 768px) {
+  .md\:top-32 {
+    top: 8rem;
+  }
+
   .md\:order-1 {
     order: 1;
   }
@@ -1591,6 +1635,10 @@ select {
 
   .md\:hidden {
     display: none;
+  }
+
+  .md\:h-\[40\%\] {
+    height: 40%;
   }
 
   .md\:w-auto {
@@ -1637,6 +1685,11 @@ select {
   .md\:py-12 {
     padding-top: 3rem;
     padding-bottom: 3rem;
+  }
+
+  .md\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 
   .md\:text-5xl {
@@ -1689,6 +1742,10 @@ select {
 }
 
 @media (min-width: 1024px) {
+  .lg\:top-1\/3 {
+    top: 33.333333%;
+  }
+
   .lg\:float-start {
     float: inline-start;
   }
@@ -1702,8 +1759,21 @@ select {
     margin-bottom: 1.75rem;
   }
 
+  .lg\:mt-\[18\%\] {
+    margin-top: 18%;
+  }
+
+  .lg\:h-max {
+    height: -moz-max-content;
+    height: max-content;
+  }
+
   .lg\:max-h-\[450px\] {
     max-height: 450px;
+  }
+
+  .lg\:max-h-\[60\%\] {
+    max-height: 60%;
   }
 
   .lg\:w-3\/5 {
@@ -1712,6 +1782,10 @@ select {
 
   .lg\:w-4\/5 {
     width: 80%;
+  }
+
+  .lg\:w-\[40\%\] {
+    width: 40%;
   }
 
   .lg\:max-w-\[80\%\] {
@@ -1732,6 +1806,14 @@ select {
 
   .lg\:items-start {
     align-items: flex-start;
+  }
+
+  .lg\:justify-evenly {
+    justify-content: space-evenly;
+  }
+
+  .lg\:gap-20 {
+    gap: 5rem;
   }
 
   .lg\:py-12 {
