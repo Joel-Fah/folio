@@ -1,0 +1,84 @@
+{% load static tailwind_tags %}
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="Joël Fah Portfolio">
+    <meta name="description"
+        content=" Meet Joël Fah: UI/UX designer, community enthusiast, and tech-loving computer science student. Creating screen magic, contributing to open source, and inspiring growth at meetups. Using skills for a brighter future, one community at a time. ✨">
+    <meta name="keywords"
+        content="portfolio, folio, website, personal, dejon, fah, joel, joël, xavier, personal, site, web, designer, ui, ux, personnel, figma, projects, projets, Dejon, Fah, Joel, Xavier, Joel Fah, interfaces, user-friendly, flutter, apps, develop, design, community, open-source, computer, science">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
+    <meta name="author" content="Dejon Fah Joel Xavier">
+
+    <!-- og tags -->
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://joelfah.onrender.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Joël Fah Portfolio">
+    <meta property="og:description"
+        content=" Meet Joël Fah: UI/UX designer, community enthusiast, and tech-loving computer science student. Creating screen magic, contributing to open source, and inspiring growth at meetups. Using skills for a brighter future, one community at a time. ✨">
+    <meta property="og:image"
+        content="https://opengraph.b-cdn.net/production/documents/95e9b5c0-461e-41b0-9a23-fe4ccbe73d1a.png?token=6vNtoDcONYonvsycXBrIkZiRUkvYhWXcsGOChQmqdGw&height=630&width=1200&expires=33240179407">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="joelfah.onrender.com">
+    <meta property="twitter:url" content="https://joelfah.onrender.com/">
+    <meta name="twitter:title" content="Joël Fah Portfolio">
+    <meta name="twitter:description"
+        content=" Meet Joël Fah: UI/UX designer, community enthusiast, and tech-loving computer science student. Creating screen magic, contributing to open source, and inspiring growth at meetups. Using skills for a brighter future, one community at a time. ✨">
+    <meta name="twitter:image"
+        content="https://opengraph.b-cdn.net/production/documents/95e9b5c0-461e-41b0-9a23-fe4ccbe73d1a.png?token=6vNtoDcONYonvsycXBrIkZiRUkvYhWXcsGOChQmqdGw&height=630&width=1200&expires=33240179407">
+    <!-- Meta Tags Generated via https://www.opengraph.xyz -->
+
+    <title>Joël Fah's Portfolio - Page not found</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static './images/favicon.png' %}" type="image/x-icon">
+
+    <!-- Font ~ Urbanist @Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons ~ Iconoir -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css" />
+
+    <!-- Styles -->
+    {% tailwind_css %}
+</head>
+<body class="bg-darkBlue text-yellowWhite font-['urbanist'] text-lg m-0 max-md:overflow-hidden">
+    <div class="h-dvh w-full grid-cols-12">
+        <div class="h-full relative col-span-12">
+            <img class="object-cover max-sm:h-[30%] md:h-[40%] lg:max-h-[60%] lg:h-max w-full opacity-40 transition-opacity duration-1000 ease-in-out hover:opacity-100" src="{% static './images/404_bg.jpg' %}" alt="Abandoned old house attic wood interior vector. Image by upklyak @Freepik">
+            <div class="flex flex-col lg:flex-row items-center justify-center lg:justify-evenly lg:gap-20 px-[10%] mx-auto absolute bottom-0 right-0 left-0 top-10 md:top-32 lg:top-1/3 bg-[linear-gradient(180deg,rgba(12,4,38,0.00)_0%,#0C0426_37.2%)]">
+                <img class="mt-[50%] lg:mt-[18%] lg:w-[40%]" src="{% static './images/404_img.svg' %}" alt="Page not found (404) error code">
+
+                <div class="lg:mt-[18%] flex flex-col gap-5 items-center text-center lg:items-start lg:text-left">
+                    <p class="text-xl md:text-2xl">
+                        👋🏽 Uh-oh! Lost in the design wilderness. <br>
+                        Looks like a glitch in the design matrix.
+                        <small class="block font-extralight text-yellowWhite/50 max-sm:text-sm">
+                            Sorry, but there's nothing to find here. Don't tell anyone. 🙈
+                        </small>
+                    </p>
+
+                    <a href="{% url 'core:home' %}"
+                        class="flex flex-row py-5 px-7 items-center justify-center gap-2 font-medium rounded-full bg-primaryColor/10 ease-in-out duration-300 hover:gap-4">
+                        Back to main canvas
+                        <i class="iconoir-rocket text-2xl rotate-45"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
