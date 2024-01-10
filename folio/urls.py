@@ -32,7 +32,10 @@ urlpatterns = [
     path('tinymce/', include('tinymce.urls')),
     path('__reload__/', include("django_browser_reload.urls")),
     path('sitemap.xml', sitemap_views.sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = 'core.views.custom_page_not_found_view'
 handler500 = 'core.views.custom_error_view'
