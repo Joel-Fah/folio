@@ -6,7 +6,7 @@ from .base import *
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-1%%^y@_&a-^p%#c*zuhy(b@%b79gdj!nabf0jsidcd^)(hgph@'
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192.168.8.109']
 
