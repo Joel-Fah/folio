@@ -11,6 +11,7 @@ __pycache__/
 build/
 develop-eggs/
 dist/
+!staticfiles/css/dist
 !/theme/static/css/dist
 media/
 downloads/
