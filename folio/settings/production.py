@@ -16,6 +16,3 @@ ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(" ")
 DATABASES = {
     'default': dj_database_url.parse(os.getenv("DATABASE_URL"))
 }
-
-STATIC_ROOT = "staticfiles"
-MEDIA_ROOT = os.path.join('media/')

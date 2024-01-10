@@ -41,7 +41,7 @@
     <title>Joël Fah's Portfolio - Page not found</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{% static './images/favicon.png' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
 
     <!-- Font ~ Urbanist @Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -53,8 +53,7 @@
     <!-- Icons ~ Iconoir -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css" />
 
-    <!-- Styles -->
-    <!-- <link rel="stylesheet" href="{% static './css/styles.css' %}"> -->
+    <!-- Styles ~ Tailwind CSS-->
     {% tailwind_css %}
     {% block styles %}{% endblock styles %}
 </head>
@@ -66,7 +65,7 @@
             class="w-full">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-center gap-24 max-sm:gap-0 mx-auto max-sm:justify-between">
                 <a href="" class="flex items-center justify-center rtl:space-x-reverse">
-                    <img src="{% static './images/logo_jf-trans.png' %}" class="w-9 h-9" alt="Logo Joel Fah">
+                    <img src="{% static 'images/logo_jf-trans.png' %}" class="w-9 h-9" alt="Logo Joel Fah">
                     <svg class="w-full h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 39 19"
                         fill="none">
                         <path
@@ -188,7 +187,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
 
     <!-- Main JS -->
-    <script src="{% static './js/main.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
 </body>
 
 </html>

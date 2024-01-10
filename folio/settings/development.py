@@ -30,7 +30,3 @@ DATABASES = {
     
     'production': dj_database_url.parse("postgres://folio_gyf8_user:uEDyQZlhJklHPH5rMFhTciwEn2fMaNDi@dpg-cm9jmqun7f5s73cmtal0-a/folio_gyf8"),
 }
-
-STATICFILES_DIRS = [
-    os.path.join('core/static/')
-]
