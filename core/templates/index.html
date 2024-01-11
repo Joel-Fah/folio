@@ -6,6 +6,11 @@
 Home
 {% endblock title %}
 
+<!-- Header -->
+{% block header %}
+  {% include "header_scrollspy.html" %}
+{% endblock header %}
+
 <!-- Body of the page -->
 {% block body %}
 <div class="max-w-[95%] lg:max-w-[80%] mx-auto grid-cols-12">
@@ -165,3 +170,8 @@ Home
   </section>
 </div>
 {% endblock body %}
+
+<!-- Javascript -->
+{% block javascript %}
+  <script src="{% static 'js/main.js' %}"></script>
+{% endblock javascript %}
