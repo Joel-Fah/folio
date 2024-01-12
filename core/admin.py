@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.admin.widgets import AdminFileWidget
 from django.utils.html import format_html
 from django.db import models
-from .models import Project, Tag
+from .models import Project, Tag, AcademicAchievement, Certification, Volunteering
 
 # Register your models here.
 
@@ -27,19 +27,46 @@ class ProjectAdmin(admin.ModelAdmin):
     search_fields = ['name']
     list_display = ['id', 'name', 'is_visible', 'link']
     
-    formfield_overrides = {           # Here
+    formfield_overrides = {
         models.ImageField: {"widget": CustomAdminFileWidget}
     }
     
 class TagAdmin(admin.ModelAdmin):
     model = Tag
-    list_filter = ['name']
-    search_fields = ['name']
     list_display = ['id', 'name', 'get_project_name']
+    search_fields = ['name']
+    list_filter = ['name']
     
     @admin.display(description='Project name', ordering='project__name')
     def get_project_name(self, obj):
         return obj.project.name
     
+class AcademicAchievementAdmin(admin.ModelAdmin):
+    list_display = ['id', 'title', 'institution', 'is_visible']
+    search_fields = ['title', 'institution']
+    list_filter = ['title', 'institution']
+
+class CertificationAdmin(admin.ModelAdmin):
+    list_display = ['id', 'title', 'organisation', 'is_visible']
+    search_fields = ['title', 'organisation']
+    list_filter = ['title', 'organisation']
+    
+    formfield_overrides = {
+        models.ImageField: {"widget": CustomAdminFileWidget}
+    }
+
+class VolunteeringAdmin(admin.ModelAdmin):
+    list_display = ['id', 'title', 'organisation', 'is_visible']
+    search_fields = ['title', 'organisation']
+    list_filter = ['title', 'organisation']
+    
+    formfield_overrides = {
+        models.ImageField: {"widget": CustomAdminFileWidget}
+    }
+
+# Register in admin dashboard
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(Tag, TagAdmin)
+admin.site.register(AcademicAchievement, AcademicAchievementAdmin)
+admin.site.register(Certification, CertificationAdmin)
+admin.site.register(Volunteering, VolunteeringAdmin)

@@ -5,9 +5,8 @@ from slugify import slugify
 # Create your models here.
 
 class Project(models.Model):
-    content = tinymce_models.HTMLField()
-    
     name = models.CharField(max_length = 150, blank=False, null=False)
+    content = tinymce_models.HTMLField()
     client = models.CharField(max_length = 150)
     role = models.CharField(max_length = 150)
     link = models.URLField(max_length = 200, blank=True, null=True)
@@ -34,7 +33,51 @@ class Tag(models.Model):
     name = models.CharField(max_length = 150, blank=False, null=False)
 
     created_at = models.DateTimeField(auto_now=True, auto_now_add=False)
-    updated_at = models.DateTimeField(auto_now=True, auto_now_add=False)
+    updated_at = models.DateTimeField(auto_now=False, auto_now_add=False)
     
     def __str__(self):
         return self.name
+    
+# About Page models
+class AcademicAchievement(models.Model):
+    title = models.CharField(max_length=255)
+    description = tinymce_models.HTMLField()
+    date_earned = models.DateField()
+    institution = models.CharField(max_length=255)
+    link = models.URLField(max_length = 200, blank=True, null=True)
+    
+    is_visible = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now=True, auto_now_add=False)
+    updated_at = models.DateTimeField(auto_now=False, auto_now_add=False)
+
+    def __str__(self):
+        return self.title
+    
+class Certification(models.Model):
+    title = models.CharField(max_length=255)
+    description = tinymce_models.HTMLField()
+    date_earned = models.DateField()
+    organisation = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='achievements/certifications/', blank=True, null=True)
+    link = models.URLField(max_length = 255, blank=True, null=True)
+    
+    is_visible = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now=True, auto_now_add=False)
+    updated_at = models.DateTimeField(auto_now=False, auto_now_add=False)
+
+    def __str__(self):
+        return self.title
+
+class Volunteering(models.Model):
+    title = models.CharField(max_length=255)
+    description = tinymce_models.HTMLField()
+    organisation = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='achievements/volunteering/', blank=True, null=True)
+    link = models.URLField(max_length = 255, blank=True, null=True)
+    
+    is_visible = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now=True, auto_now_add=False)
+    updated_at = models.DateTimeField(auto_now=False, auto_now_add=False)
+    
+    def __str__(self):
+        return self.title

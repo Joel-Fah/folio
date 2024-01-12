@@ -1,0 +1,80 @@
+{% load static tailwind_tags %}
+
+{% with request.resolver_match.url_name as url_name %}
+<header class="flex items-center justify-center w-full bg-navbarBarBg/80 text-sm fixed z-20 top-0 start-0 backdrop-blur-md px-7 py-1 max-sm:px-1 shadow-xl">
+    <nav
+        class="w-full">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-center gap-24 max-sm:gap-0 mx-auto max-sm:justify-between">
+            <a href="{% if url_name == 'home' %} #hero {% else %} {% url 'core:home' %} {% endif %}" class="{% if not url_name == 'home' %} page-link {% endif %} flex items-center justify-center rtl:space-x-reverse">
+                <img src="{% static 'images/logo_jf-trans.png' %}" class="w-9 h-9" alt="Logo Joel Fah">
+                <svg class="w-full h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 39 19"
+                    fill="none">
+                    <path
+                        d="M4.66002 6.05992H4.98002L4.92002 13.6999V15.6199L4.90002 16.8599L3.92002 17.2199L3.34002 17.4399L2.34002 17.7999L2.30002 17.6999L1.18002 18.1799L1.04002 17.8599L2.18002 17.3799V17.3599L1.04002 17.7599L0.800018 17.1199L0.900018 17.0799L0.600018 17.0999L0.300018 9.91992L0.880018 9.89992L0.940018 10.3199V9.69992H1.64002V10.1199H2.02002V16.0399L2.28002 15.9399L3.02002 15.6999L3.10002 15.6599H3.16002V15.6399H3.20002C3.20002 15.6399 3.20669 15.6333 3.22002 15.6199V15.4799L3.24002 14.7399L3.30002 13.2599L3.40002 10.3199H3.36002L3.28002 6.05992L0.560018 5.97992V5.11992H0.640018V4.51992L4.82002 4.43992V5.01992L4.90002 5.03992V5.25992H4.44002L4.68002 5.33992H4.72002V5.35992L4.88002 5.39992V5.89992L4.68002 5.87992L4.66002 6.05992Z"
+                        fill="white" />
+                    <path
+                        d="M10.3135 15.2799H10.0735L10.1535 16.8599L9.79346 16.8799V16.7999H9.75346V16.9399L10.1735 16.9599V17.3599L9.99346 17.3399L9.97346 17.6799L8.39346 17.6199L7.61346 17.5799L6.19346 17.5399V17.4999L6.05346 17.6399L5.89346 5.93992H5.75346V5.59992H6.59346L6.61346 5.49992H5.63346V5.15992H6.17346L6.15346 4.97992L5.47346 4.93992L5.49346 4.59992H10.1935L10.3135 15.2799ZM9.01346 14.8999L8.83346 14.8799L8.93346 12.5799H8.89346L8.87346 8.95992L8.85346 7.13992V5.95992H7.27346L7.23346 7.67992L7.43346 7.69992L7.49346 14.5999V16.2199H7.57346V16.2399H9.07346L9.01346 14.8999ZM9.77346 16.3399L9.75346 15.9599H9.67346L9.71346 16.3399H9.77346ZM6.47346 6.51992L6.55346 5.95992H6.47346V6.51992Z"
+                        fill="white" />
+                    <path
+                        d="M15.8027 5.35992H16.0827L15.8627 7.93992L15.8427 9.07992L15.8227 9.37992V9.75992L15.8027 10.6999L14.5827 10.7799L13.8227 10.8199L13.8027 11.0199L12.7427 11.0399L12.8227 16.0599H14.2227L14.3027 12.3799L14.7027 12.2999L14.7427 13.1199H14.9627L14.9827 12.2599V12.0399L15.3827 12.0199V12.2599L15.8027 12.2799L15.7027 17.5799H11.3227L11.1827 8.27992L11.1027 6.89992L11.0827 6.53992V6.37992L11.0627 6.03992L11.0227 4.69992L12.7027 4.67992L13.5827 4.63992L13.6027 4.89992L15.4227 4.87992V5.27992H15.6827V5.73992L15.8027 5.35992ZM14.5027 6.33992H12.6627L12.7227 10.1799H12.7627L12.7227 9.83992L13.0627 9.81992V9.63992L14.1427 9.53992L14.4027 9.51992H14.4827V9.49992H14.5027V6.33992ZM15.6627 3.55992H15.5627L15.6227 3.79992L15.2827 3.81992L15.2227 3.55992H15.2027V3.79992H14.5027V3.75992H13.8627L14.0627 1.93992H14.0227L13.8627 1.03992H13.9827L13.9627 0.959921H14.3027L14.3227 1.03992H14.4427V0.959921H14.6227V0.919922L15.3227 0.939922L15.2627 1.07992H15.5627L15.6627 3.55992ZM11.8427 3.57992L11.4427 3.55992V1.47992H12.0027L12.0227 1.27992H12.5427L12.6227 1.39992H12.6427L12.6627 1.23992H13.2827L13.1827 3.73992H12.5627V3.65992H12.4627V3.75992H11.8227L11.8427 3.57992Z"
+                        fill="white" />
+                    <path
+                        d="M20.4067 15.9199L19.1667 15.9799V15.9999H20.3667V16.6999H20.1867L20.1467 17.3399L18.8867 17.2999H17.9867L16.7867 17.2799L16.8067 15.7199L16.8267 15.5199V15.2199L16.8467 14.7999L16.9067 13.1999L17.0067 9.95992H16.9867L16.8867 5.47992H16.9867V5.05992L17.3267 5.03992L17.3467 5.45992H17.4667V5.05992H17.6467V4.93992L18.3267 5.01992L18.2667 5.71992H18.5867L18.5267 13.7599V15.5599L18.5467 15.5399H19.1667V15.6399L20.3867 15.5799L20.4067 15.9199Z"
+                        fill="white" />
+                    <path
+                        d="M28.0733 5.59992L27.9133 5.63992V5.93992L27.5133 5.97992V6.15992L26.8933 6.03992V6.07992H25.9533L25.8933 9.55992L27.9533 9.39992L27.9733 9.97992L27.7333 10.0599H28.0733V10.7399H27.8533V11.1199H25.8733L25.7733 17.3999L25.1333 17.3799L25.1533 16.9999H25.0533L25.0333 17.4999L24.4133 17.4799L24.4333 16.5799L24.0333 16.4199L24.0933 11.1199H24.0133L23.9533 10.5999L24.0933 10.4599V10.3199H24.0333L24.0133 9.69992H24.0933L24.1333 6.03992H23.9733V5.69992H24.2333V5.59992H23.9533V5.25992H24.0933V5.07992L23.9133 5.03992V4.69992H27.6133V4.93992L28.0333 4.87992V5.21992L27.7933 5.25992V5.33992L28.0733 5.25992V5.59992Z"
+                        fill="white" />
+                    <path
+                        d="M33.3789 11.7399L33.3989 17.9999H32.7589V17.5199H32.6789L32.6589 18.1599L32.0389 18.1399L32.0589 17.1999L31.5589 17.2399L31.5789 17.6199L28.7789 17.8399V8.33992L31.5789 8.05992L31.5589 6.41992L30.4189 6.45992L30.3789 5.91992H29.1789L29.1389 5.39992L29.8989 5.29992V5.25992L28.8789 5.27992V4.65992L30.6589 4.61992L31.5989 4.59992L33.3589 4.55992L33.3789 6.11992V11.7399ZM30.6989 15.9799L31.6389 15.8799L31.5989 9.49992L31.0189 9.55992L30.6989 9.61992L30.5389 9.63992H30.4389C30.4123 9.65325 30.3789 9.65992 30.3389 9.65992C30.3123 9.65992 30.2856 9.66659 30.2589 9.67992L30.2789 9.81992V9.95992L30.2989 10.0999L30.3989 14.9599L30.4389 15.9399V15.9999C30.4389 16.0133 30.4389 16.0199 30.4389 16.0199C30.4523 16.0199 30.4589 16.0266 30.4589 16.0399C30.4723 16.0266 30.4856 16.0199 30.4989 16.0199V15.9999H30.5589L30.6989 15.9799Z"
+                        fill="white" />
+                    <path
+                        d="M39.0086 17.5199L38.4086 17.5599L38.3486 16.8599V17.8999H37.6686V17.1799H37.2886V9.17992H35.7486L35.6686 13.9599L35.8086 16.6199L35.5486 16.6399V17.6799H35.1286V17.3999L34.9286 17.3799V17.4799L34.1086 17.4399L34.3086 4.51992L34.7086 4.47992L34.7686 4.95992H34.9686L34.9886 4.45992V4.33992L35.3886 4.31992V4.45992L35.8086 4.47992L35.7686 7.75992L36.6886 7.71992H37.5086L38.7686 7.69992L38.7886 8.67992V9.47992L38.8286 10.6199L39.0086 17.5199ZM35.8486 8.37992H35.7486V8.41992L35.8486 8.37992Z"
+                        fill="white" />
+                </svg>
+            </a>
+            <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse md:hidden">
+                <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-yellowWhite/10 " aria-controls="navbar-sticky" aria-expanded="false">
+                  <span class="sr-only">Open main menu</span>
+                  <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                  </svg>
+              </button>
+            </div>
+            <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+                <ul
+                    class="flex flex-row p-4 md:p-0 mt-4 font-medium md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 items-center justify-between max-sm:gap-2">
+                    <li>
+                        <a href="#hero"
+                            class="max-sm:whitespace-nowrap block ring bg-hoverColor/10 font-medium rounded-md md:ring-0 md:text-primaryColor md:outline md:outline-1 md:outline-primaryColor px-3 py-1.5 md:py-1 transition-all duration-300 ease-in-out"
+                            aria-current="page">
+                            ✌🏽️ Hello
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#works"
+                            class="max-sm:whitespace-nowrap block max-sm:text-yellowWhite/70 rounded-md md:ring-0 bg-transparent md:hover:text-yellowWhite/70 md:hover:bg-yellowWhite/10 md:py-1 md:outline md:outline-1 md:outline-transparent px-3 py-1.5  transition-all duration-300 ease-in-out">
+                            ✊🏽 Works
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#about"
+                            class="max-sm:whitespace-nowrap block max-sm:text-yellowWhite/70 rounded-md md:ring-0 bg-transparent md:hover:text-yellowWhite/70 md:hover:bg-yellowWhite/10 md:py-1 md:outline md:outline-1 md:outline-transparent px-3 py-1.5  transition-all duration-300 ease-in-out">
+                            🖐🏽 About
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#footer"
+                            class="max-sm:whitespace-nowrap block max-sm:text-yellowWhite/70 rounded-md md:ring-0 bg-transparent md:hover:text-yellowWhite/70 md:hover:bg-yellowWhite/10 md:py-1 md:outline md:outline-1 md:outline-transparent px-3 py-1.5  transition-all duration-300 ease-in-out">
+                            🤙🏽 Connect
+                        </a>
+                    </li>
+                    <!-- <li>
+                        <span
+                            class="text-yellowWhite/50 max-sm:p-1 max-sm:rounded-md max-sm:px-2 {% if url_name == 'community' %} max-sm:ring max-sm:bg-hoverColor/10 {% else %} {% endif %} block px-3 font-medium md:p-0 transition-all duration-300 ease-in-out pointer-events-none cursor-not-allowed">🔒 Community</span>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+{% endwith %}

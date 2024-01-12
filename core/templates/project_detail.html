@@ -2,10 +2,20 @@
 {% load static tailwind_tags %}
 {% load static %}
 
-<!-- Titile of the page -->
+<!-- Meta tags -->
+{% block meta_tags %}
+  {% include "components/meta.html" %}
+{% endblock meta_tags %}
+
+<!-- Title of the page -->
 {% block title %}
   {{ object.name }}
 {% endblock title %}
+
+<!-- Header Section -->
+{% block header %}
+    {% include "components/header_alt.html" %}
+{% endblock header %}
 
 <!-- Body of the page -->
 {% block body %}
