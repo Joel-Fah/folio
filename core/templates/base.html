@@ -1,7 +1,7 @@
 {% load static tailwind_tags %}
 
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth bg-darkBlue">
 
 <head>
     <!-- Meta tags -->
@@ -18,24 +18,9 @@
     <meta name="author" content="Dejon Fah Joel Xavier">
 
     <!-- og tags -->
-    <!-- Facebook Meta Tags -->
-    <meta property="og:url" content="https://joelfah.onrender.com/">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Joël Fah Portfolio">
-    <meta property="og:description"
-        content=" Meet Joël Fah: UI/UX designer, community enthusiast, and tech-loving computer science student. Creating screen magic, contributing to open source, and inspiring growth at meetups. Using skills for a brighter future, one community at a time. ✨">
-    <meta property="og:image"
-        content="https://opengraph.b-cdn.net/production/documents/95e9b5c0-461e-41b0-9a23-fe4ccbe73d1a.png?token=6vNtoDcONYonvsycXBrIkZiRUkvYhWXcsGOChQmqdGw&height=630&width=1200&expires=33240179407">
-
-    <!-- Twitter Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta property="twitter:domain" content="joelfah.onrender.com">
-    <meta property="twitter:url" content="https://joelfah.onrender.com/">
-    <meta name="twitter:title" content="Joël Fah Portfolio">
-    <meta name="twitter:description"
-        content=" Meet Joël Fah: UI/UX designer, community enthusiast, and tech-loving computer science student. Creating screen magic, contributing to open source, and inspiring growth at meetups. Using skills for a brighter future, one community at a time. ✨">
-    <meta name="twitter:image"
-        content="https://opengraph.b-cdn.net/production/documents/95e9b5c0-461e-41b0-9a23-fe4ccbe73d1a.png?token=6vNtoDcONYonvsycXBrIkZiRUkvYhWXcsGOChQmqdGw&height=630&width=1200&expires=33240179407">
+    {% block meta_tags %}
+      
+    {% endblock meta_tags %}
     <!-- Meta Tags Generated via https://www.opengraph.xyz -->
 
     <title>Joël Fah's Portfolio - {% block title %}{% endblock title %} </title>
@@ -57,8 +42,12 @@
     {% tailwind_css %}
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <link rel="stylesheet" href="{% static 'css/dist/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
     {% block styles %}{% endblock styles %}
+
+    <!-- Preoad JS ~ Jquery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
 </head>
 
 <body class="bg-darkBlue text-yellowWhite font-['urbanist'] text-lg {% block body_styles %}{% endblock body_styles %}">
@@ -120,6 +109,9 @@
     {% block javascript %}
       
     {% endblock javascript %}
+
+    <script src="{% static 'js/page_transition.js' %}"></script>
+
 </body>
 
 </html>

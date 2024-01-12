@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% load static tailwind_tags my_tags %}
 
+<!-- Meta tags -->
+{% block meta_tags %}
+{% include "components/meta_about.html" %}
+{% endblock meta_tags %}
+
 <!-- Title of the page -->
 {% block title %}
 About
@@ -8,30 +13,34 @@ About
 
 <!-- Header -->
 {% block header %}
-{% include "header_alt.html" %}
+{% include "components/header_alt.html" %}
 {% endblock header %}
 
 <!-- Body styles -->
 {% block body_styles %}
-bg-[url('../../../static/images/body_bg.png')] bg-no-repeat bg-contain bg-top
+bg-[url(https://s3-alpha-sig.figma.com/img/7631/d33d/a746fa24f8da83b77f65f0f5adfd8b6b?Expires=1705881600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=loj2yLxXU9SeA4rc1z9gSdIKR5kN4EXoAx4vaBF1yaxnZ~MerNTfne6Qgh~EXFfKjA9SRRc1o~lbRxyX48wzuUq1LJk9mdNre6t51LVz1e5CohKdnhk3ouuderIufIkQa9OVRrWBeelOltRPF09nKcgc2E0oLMpAWbI5IluuvibHoT9OdmUrIOdA13t0pfkm3dvkbTPjb98yj-HgIGN7ONTIVx1OJsZMVtZ2peDlH89-DWrDvA7Zck3CIk5O3XP3DHxa1~WL7lPZIGNCUHegkKz~JK5WHNlXRgJBRDuCCzOwAncsAmiqlXOu2kOrJPWoYu0caA8T-98at4cSGUAXDQ__)] bg-no-repeat bg-contain bg-top
 {% endblock body_styles %}
 
 <!-- Body of the page -->
 {% block body %}
 <!-- Only visible on smaller screens -->
 
-<div class="relative flex items-start justify-center h-[50dvh] overflow-hidden">
-    <div class="flex items-start gap-2.5 mt-32 lg:hidden">
-        <img class="w-8 h-8 rounded-full" src="https://avatars.githubusercontent.com/u/69576717?v=4" alt="Joel Fah logo">
+<div class="relative flex items-center justify-center h-dvh overflow-hidden lg:hidden">
+    <div class="flex items-start gap-2.5 mt-32">
+        <img class="w-8 h-8 rounded-full" src="https://avatars.githubusercontent.com/u/69576717?v=4"
+            alt="Joel Fah logo">
         <div
             class="flex flex-col w-full max-w-[320px] leading-1.5 p-4 border-yellowWhite/50 bg-navbarBarBg rounded-e-xl rounded-es-xl">
             <div class="flex items-center space-x-2">
-                <span class="flex items-center font-semibold">Website support <span class="bg-yellow-100 text-yellow-800 text-xs ms-2 font-medium px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">Warning</span></span>
+                <span class="flex items-center font-semibold">Website support <span
+                        class="bg-yellow-100 text-yellow-800 text-xs ms-2 font-medium px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">Warning</span></span>
                 <span class="text-sm font-normal text-gray-400">now</span>
             </div>
             <p class="text-sm font-normal py-2.5">
-                Hey trendsetter! 🚀 Our website is currently strutting its stuff on larger screens, but don't fret. A pocket-sized
-                makeover is in the works for the future! Stay fab, and get ready for a designer touch on all screen sizes soon. 💻✨
+                Hey trendsetter! 🚀 Our website is currently strutting its stuff on larger screens, but don't fret. A
+                pocket-sized
+                makeover is in the works for the future! Stay fab, and get ready for a designer touch on all screen
+                sizes soon. 💻✨
                 <br>
                 #ComingSoon #StayTuned
             </p>
@@ -41,7 +50,18 @@ bg-[url('../../../static/images/body_bg.png')] bg-no-repeat bg-contain bg-top
 
     <div class="-z-1">
         <div
-            class="rotate-6 shadow-[0_4px_15px_rgb(0,0,0,0.8)] text-sm flex items-center justify-center gap-3 bg-[#F79009] absolute top-96 -right-5 -left-5 py-2 text-darkBlue font-semibold">
+            class="rotate-6 shadow-[0_4px_15px_rgb(0,0,0,0.8)] text-sm flex items-center justify-center gap-3 bg-[#F79009] absolute top-32 -right-5 -left-5 py-2 text-darkBlue font-semibold">
+            {% for i in 1|get_range:15 %}
+            {% if i|modulo:2 %}
+            <!-- <div class="w-1.5 h-1.5 whitespace-nowrap rounded-full bg-darkBlue"></div> -->
+            <i class="iconoir-{{ tool }}"></i>
+            {% else %}
+            <span class="whitespace-nowrap">Website under construction</span>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <div
+            class="-rotate-6 shadow-[0_4px_15px_rgb(0,0,0,0.8)] text-sm flex items-center justify-center gap-3 bg-[#F79009] absolute top-48 -right-5 -left-5 py-2 text-darkBlue font-semibold">
             {% for i in 1|get_range:15 %}
             {% if i|modulo:2 %}
             <!-- <div class="w-1.5 h-1.5 whitespace-nowrap rounded-full bg-darkBlue"></div> -->
@@ -53,7 +73,7 @@ bg-[url('../../../static/images/body_bg.png')] bg-no-repeat bg-contain bg-top
         </div>
 
         <div
-            class="-rotate-6 shadow-[0_4px_15px_rgb(0,0,0,0.8)] text-sm flex items-center justify-center gap-3 bg-[#F79009] absolute top-96 -right-5 -left-5 py-2 text-darkBlue font-semibold">
+            class="-rotate-6 shadow-[0_4px_15px_rgb(0,0,0,0.8)] text-sm flex items-center justify-center gap-3 bg-[#F79009] absolute top-[80%] -right-5 -left-5 py-2 text-darkBlue font-semibold">
             {% for i in 1|get_range:15 %}
             {% if i|modulo:2 %}
             <!-- <div class="w-1.5 h-1.5 whitespace-nowrap rounded-full bg-darkBlue"></div> -->
@@ -67,7 +87,7 @@ bg-[url('../../../static/images/body_bg.png')] bg-no-repeat bg-contain bg-top
 </div>
 
 <!-- Only visible on larger screens -->
-<div class="relative mt-20 overflow-x-hidden max-lg:hidden">
+<div id="top_about" class="relative mt-20 overflow-x-hidden max-lg:hidden">
     <div class="grid-cols-12 max-w-[80%] mx-auto z-1">
         <div class="flex flex-col gap-3">
             <h1 class="font-extrabold text-8xl">Dejon Fah <br> Joël Xavier</h1>
@@ -222,7 +242,7 @@ bg-[url('../../../static/images/body_bg.png')] bg-no-repeat bg-contain bg-top
                     <button id="certifications-tab" data-tabs-target="#certifications" type="button" role="tab"
                         aria-controls="certifications" aria-selected="false"
                         class="flex items-center gap-2 text-lg p-4 text-primaryColor hover:text-yellowWhite/60 hover:bg-primaryColor/10">
-                        <i class="iconoir-badge-check text-xl"></i>
+                        <i class="iconoir-user-badge-check text-xl"></i>
                         Certifications
                     </button>
                 </li>
@@ -241,74 +261,45 @@ bg-[url('../../../static/images/body_bg.png')] bg-no-repeat bg-contain bg-top
                 <div class="hidden p-4 rounded-b-3xl bg-primaryColor/5 w-[95%] mx-auto border-2 border-t-0 border-yellowWhite/50 md:p-8"
                     id="academics" role="tabpanel" aria-labelledby="academics-tab">
 
+                    {% for academic in academics %}
+                    {% if academic.is_visible %}
                     <div class="container">
-                        <ol class="relative border-s border-gray-200 dark:border-gray-700">
-                            <li class="mb-10 ms-6">
+                        <ol class="relative border-s border-gray-700">
+                            <li class="mb-10 ms-8">
                                 <span
-                                    class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-                                    <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-                                    </svg>
+                                    class="absolute flex items-center justify-center w-6 h-6 bg-hoverColor rounded-full -start-3 ring-8">
+                                    <i class="iconoir-city text-sm"></i>
                                 </span>
-                                <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">
-                                    Flowbite Application UI v2.0.0 <span
-                                        class="bg-blue-100 text-blue-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 ms-3">Latest</span>
+
+                                <h3 class="flex items-center mb-1 text-lg font-semibold text-yellowWhite">
+                                    {{ academic.title }}
+                                    <!-- <span
+                                            class="text-sm font-medium me-2 px-2.5 py-0.5 rounded bg-hoverColor text-yellowWhite ms-3">
+                                            Latest
+                                        </span> -->
                                 </h3>
-                                <time
-                                    class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Released
-                                    on January 13th, 2022</time>
+
+                                <small> {{ academic.institution }} </small>
+
+
+                                <time class="block mb-2 text-sm font-normal leading-none text-gray-500">
+                                    {{ academic.date_earned }}
+                                </time>
+
                                 <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">Get access to
-                                    over 20+ pages including a dashboard layout, charts, kanban board, calendar, and
-                                    pre-order E-commerce & Marketing pages.</p>
-                                <a href="#"
-                                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-200 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700"><svg
-                                        class="w-3.5 h-3.5 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                        fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M14.707 7.793a1 1 0 0 0-1.414 0L11 10.086V1.5a1 1 0 0 0-2 0v8.586L6.707 7.793a1 1 0 1 0-1.414 1.414l4 4a1 1 0 0 0 1.416 0l4-4a1 1 0 0 0-.002-1.414Z" />
-                                        <path
-                                            d="M18 12h-2.55l-2.975 2.975a3.5 3.5 0 0 1-4.95 0L4.55 12H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2Zm-3 5a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z" />
-                                    </svg> Download ZIP</a>
-                            </li>
-                            <li class="mb-10 ms-6">
-                                <span
-                                    class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-                                    <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-                                    </svg>
-                                </span>
-                                <h3 class="mb-1 text-lg font-semibold text-gray-900 dark:text-white">Flowbite Figma
-                                    v1.3.0</h3>
-                                <time
-                                    class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Released
-                                    on December 7th, 2021</time>
-                                <p class="text-base font-normal text-gray-500 dark:text-gray-400">All of the pages and
-                                    components are first designed in Figma and we keep a parity between the two versions
-                                    even as we update the project.</p>
-                            </li>
-                            <li class="ms-6">
-                                <span
-                                    class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-                                    <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-                                    </svg>
-                                </span>
-                                <h3 class="mb-1 text-lg font-semibold text-gray-900 dark:text-white">Flowbite Library
-                                    v1.2.2</h3>
-                                <time
-                                    class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Released
-                                    on December 2nd, 2021</time>
-                                <p class="text-base font-normal text-gray-500 dark:text-gray-400">Get started with
-                                    dozens of web components and interactive elements built on top of Tailwind CSS.</p>
+                                    {{ academic.description }}
+                                </p>
+
+                                <a href="{{ academic.link }}"
+                                    class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg bg-gray-800 text-gray-400 border-gray-600 hover:text-white hover:bg-gray-700 focus:ring-gray-700 transition-all duration-300 ease-in-out">
+                                    <i class="iconoir-city text-2xl"></i>
+                                    View institution
+                                </a>
                             </li>
                         </ol>
                     </div>
+                    {% endif %}
+                    {% endfor %}
 
                 </div>
 
@@ -316,74 +307,44 @@ bg-[url('../../../static/images/body_bg.png')] bg-no-repeat bg-contain bg-top
                 <div class="hidden p-4 rounded-b-3xl bg-primaryColor/5 w-[95%] mx-auto border-2 border-t-0 border-yellowWhite/50 md:p-8"
                     id="certifications" role="tabpanel" aria-labelledby="certifications-tab">
 
-                    <div class="container">
-                        <ol class="relative border-s border-gray-200 dark:border-gray-700">
-                            <li class="mb-10 ms-6">
+                    {% for certif in certifications %}
+                    {% if certif.is_visible %}
+                    <div class="container flex flex-col lg:flex-row gap-5">
+                        <ol class="relative border-s border-gray-700">
+                            <li class="mb-10 ms-8">
                                 <span
-                                    class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-                                    <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-                                    </svg>
+                                    class="absolute flex items-center justify-center w-6 h-6 bg-hoverColor rounded-full -start-3 ring-8">
+                                    <i class="iconoir-city text-sm"></i>
                                 </span>
-                                <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">
-                                    Flowbite Application UI v2.0.0 <span
-                                        class="bg-blue-100 text-blue-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 ms-3">Latest</span>
+                                <h3 class="flex items-center mb-1 text-lg font-semibold text-yellowWhite">
+                                    {{ certif.title }}
+                                    <!-- <span class="text-sm font-medium me-2 px-2.5 py-0.5 rounded bg-hoverColor text-yellowWhite ms-3">
+                                                Latest
+                                            </span> -->
                                 </h3>
-                                <time
-                                    class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Released
-                                    on January 13th, 2022</time>
+                                <small> {{ certif.organisation}} </small>
+                                <time class="block mb-2 text-sm font-normal leading-none text-gray-500">
+                                    {{ certif.date_earned }}
+                                </time>
                                 <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">Get access to
-                                    over 20+ pages including a dashboard layout, charts, kanban board, calendar, and
-                                    pre-order E-commerce & Marketing pages.</p>
-                                <a href="#"
-                                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-200 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700"><svg
-                                        class="w-3.5 h-3.5 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                        fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M14.707 7.793a1 1 0 0 0-1.414 0L11 10.086V1.5a1 1 0 0 0-2 0v8.586L6.707 7.793a1 1 0 1 0-1.414 1.414l4 4a1 1 0 0 0 1.416 0l4-4a1 1 0 0 0-.002-1.414Z" />
-                                        <path
-                                            d="M18 12h-2.55l-2.975 2.975a3.5 3.5 0 0 1-4.95 0L4.55 12H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2Zm-3 5a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z" />
-                                    </svg> Download ZIP</a>
-                            </li>
-                            <li class="mb-10 ms-6">
-                                <span
-                                    class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-                                    <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-                                    </svg>
-                                </span>
-                                <h3 class="mb-1 text-lg font-semibold text-gray-900 dark:text-white">Flowbite Figma
-                                    v1.3.0</h3>
-                                <time
-                                    class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Released
-                                    on December 7th, 2021</time>
-                                <p class="text-base font-normal text-gray-500 dark:text-gray-400">All of the pages and
-                                    components are first designed in Figma and we keep a parity between the two versions
-                                    even as we update the project.</p>
-                            </li>
-                            <li class="ms-6">
-                                <span
-                                    class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-                                    <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-                                    </svg>
-                                </span>
-                                <h3 class="mb-1 text-lg font-semibold text-gray-900 dark:text-white">Flowbite Library
-                                    v1.2.2</h3>
-                                <time
-                                    class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Released
-                                    on December 2nd, 2021</time>
-                                <p class="text-base font-normal text-gray-500 dark:text-gray-400">Get started with
-                                    dozens of web components and interactive elements built on top of Tailwind CSS.</p>
+                                    {{ certif.description }}
+                                </p>
+                                <a href="{{ certif.link }}"
+                                    class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg bg-gray-800 text-gray-400 border-gray-600 hover:text-white hover:bg-gray-700 focus:ring-gray-700 transition-all duration-300 ease-in-out">
+                                    <i class="iconoir-badge-check text-2xl"></i>
+                                    View Certification
+                                </a>
                             </li>
                         </ol>
+
+                        {% if not certif.image.url == "" %}
+                        <div class="w-1/3 m-auto ring ring-hoverColor rounded-lg p-2 text-center">
+                            <img class="rounded" src="{{ certif.image.url }}" alt="{{ certif.title }}">
+                        </div>
+                        {% endif %}
                     </div>
+                    {% endif %}
+                    {% endfor %}
 
                 </div>
 
@@ -391,74 +352,48 @@ bg-[url('../../../static/images/body_bg.png')] bg-no-repeat bg-contain bg-top
                 <div class="hidden p-4 rounded-b-3xl bg-primaryColor/5 w-[95%] mx-auto border-2 border-t-0 border-yellowWhite/50 md:p-8"
                     id="volunteering" role="tabpanel" aria-labelledby="volunteering-tab">
 
-                    <div class="container">
-                        <ol class="relative border-s border-gray-200 dark:border-gray-700">
-                            <li class="mb-10 ms-6">
+                    {% for volunteer in volunteerings %}
+                    {% if volunteer.is_visible %}
+                    <div class="container flex flex-col lg:flex-row gap-5">
+                        <ol class="relative border-s border-gray-700">
+                            <li class="mb-10 ms-8">
                                 <span
-                                    class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-                                    <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-                                    </svg>
+                                    class="absolute flex items-center justify-center w-6 h-6 bg-hoverColor rounded-full -start-3 ring-8">
+                                    <i class="iconoir-city text-sm"></i>
                                 </span>
-                                <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">
-                                    Flowbite Application UI v2.0.0 <span
-                                        class="bg-blue-100 text-blue-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 ms-3">Latest</span>
+                                <h3 class="flex items-center mb-1 text-lg font-semibold text-yellowWhite">
+                                    {{ volunteer.title }}
+                                    <!-- <span
+                                            class="text-sm font-medium me-2 px-2.5 py-0.5 rounded bg-hoverColor text-yellowWhite ms-3">
+                                            Latest
+                                        </span> -->
                                 </h3>
-                                <time
-                                    class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Released
-                                    on January 13th, 2022</time>
+
+                                <small> {{ volunteer.organisation }} </small>
+
+                                <!-- <time
+                                        class="block mb-2 text-sm font-normal leading-none text-gray-500">
+                                        Sept. 2020 - Sept. 2022
+                                    </time> -->
                                 <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">Get access to
-                                    over 20+ pages including a dashboard layout, charts, kanban board, calendar, and
-                                    pre-order E-commerce & Marketing pages.</p>
-                                <a href="#"
-                                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-200 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700"><svg
-                                        class="w-3.5 h-3.5 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                        fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M14.707 7.793a1 1 0 0 0-1.414 0L11 10.086V1.5a1 1 0 0 0-2 0v8.586L6.707 7.793a1 1 0 1 0-1.414 1.414l4 4a1 1 0 0 0 1.416 0l4-4a1 1 0 0 0-.002-1.414Z" />
-                                        <path
-                                            d="M18 12h-2.55l-2.975 2.975a3.5 3.5 0 0 1-4.95 0L4.55 12H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2Zm-3 5a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z" />
-                                    </svg> Download ZIP</a>
-                            </li>
-                            <li class="mb-10 ms-6">
-                                <span
-                                    class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-                                    <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-                                    </svg>
-                                </span>
-                                <h3 class="mb-1 text-lg font-semibold text-gray-900 dark:text-white">Flowbite Figma
-                                    v1.3.0</h3>
-                                <time
-                                    class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Released
-                                    on December 7th, 2021</time>
-                                <p class="text-base font-normal text-gray-500 dark:text-gray-400">All of the pages and
-                                    components are first designed in Figma and we keep a parity between the two versions
-                                    even as we update the project.</p>
-                            </li>
-                            <li class="ms-6">
-                                <span
-                                    class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-                                    <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-                                    </svg>
-                                </span>
-                                <h3 class="mb-1 text-lg font-semibold text-gray-900 dark:text-white">Flowbite Library
-                                    v1.2.2</h3>
-                                <time
-                                    class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Released
-                                    on December 2nd, 2021</time>
-                                <p class="text-base font-normal text-gray-500 dark:text-gray-400">Get started with
-                                    dozens of web components and interactive elements built on top of Tailwind CSS.</p>
+                                    {{ volunteer.description }}
+                                </p>
+                                <a href="{{ volunteer.link }}"
+                                    class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg bg-gray-800 text-gray-400 border-gray-600 hover:text-white hover:bg-gray-700 focus:ring-gray-700 transition-all duration-300 ease-in-out">
+                                    <i class="iconoir-database-script-plus text-2xl"></i>
+                                    Learn more
+                                </a>
                             </li>
                         </ol>
+
+                        {% if not volunteer.image.url == "" %}
+                        <div class="w-1/3 m-auto ring ring-hoverColor rounded-lg p-2 text-center">
+                            <img class="rounded" src="{{ volunteer.image.url }}" alt="{{ volunteer.title }}">
+                        </div>
+                        {% endif %}
                     </div>
+                    {% endif %}
+                    {% endfor %}
 
                 </div>
             </div>
@@ -475,7 +410,7 @@ bg-[url('../../../static/images/body_bg.png')] bg-no-repeat bg-contain bg-top
             <div class="flex justify-center gap-5 items-center">
                 <!-- Twitter/X -->
                 <a href="https://x.com/FahDejon" title="X/Twitter" tar
-                    class="rounded-full border-2 border-primaryColor border-dashed bg-primaryColor/10 text-primaryColor flex items-center justify-center p-5">
+                    class="rounded-full border-2 border-primaryColor border-dashed bg-primaryColor/10 text-primaryColor flex items-center justify-center p-5 hover:bg-hoverColor/10 hover:text-primaryColor hover:border-hoverColor transition-all duration-300 ease-in-out">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 40 40" fill="none">
                         <path
                             d="M13.3334 3.33301H1.66669L15.4348 21.6905L2.4166 36.6662H6.83332L17.4805 24.418L26.6667 36.6663H38.3334L23.9862 17.5368L36.3335 3.33301H31.9169L21.9405 14.8093L13.3334 3.33301ZM28.3334 33.333L8.33335 6.66634H11.6667L31.6667 33.333H28.3334Z"
@@ -485,7 +420,7 @@ bg-[url('../../../static/images/body_bg.png')] bg-no-repeat bg-contain bg-top
 
                 <!-- Linkedin -->
                 <a href="https://linkedin.com/in/joelfah" title="Linkedin" tar
-                    class="rounded-full border-2 border-primaryColor border-dashed bg-primaryColor/10 text-primaryColor text-3xl flex items-center justify-center p-5">
+                    class="rounded-full border-2 border-primaryColor border-dashed bg-primaryColor/10 text-primaryColor text-3xl flex items-center justify-center p-5 hover:bg-hoverColor/10 hover:text-primaryColor hover:border-hoverColor transition-all duration-300 ease-in-out">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 40 40" fill="none">
                         <path
                             d="M11.5674 8.33289C11.5668 9.69007 10.7434 10.9114 9.48555 11.4209C8.22765 11.9304 6.78643 11.6264 5.84148 10.6523C4.89653 9.67807 4.63656 8.22826 5.18415 6.98646C5.73175 5.74466 6.97755 4.95884 8.33411 4.99956C10.1359 5.05364 11.5683 6.53029 11.5674 8.33289ZM11.6674 14.1329H5.00078V34.9995H11.6674V14.1329ZM22.2008 14.1329H15.5674V34.9995H22.1341V24.0495C22.1341 17.9495 30.0841 17.3828 30.0841 24.0495V34.9995H36.6675V21.7828C36.6675 11.4996 24.9008 11.8829 22.1341 16.9328L22.2008 14.1329Z"
@@ -493,19 +428,9 @@ bg-[url('../../../static/images/body_bg.png')] bg-no-repeat bg-contain bg-top
                     </svg>
                 </a>
 
-                <!-- Behance -->
-                <!-- <a href="https://behance.net/joelfah" title="Behance" tar
-                    class="rounded-full border-2 border-primaryColor border-dashed bg-primaryColor/10 text-primaryColor text-3xl flex items-center justify-center p-5">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 40 40" fill="none">
-                        <path
-                            d="M12.4044 8.91699C13.47 8.91699 14.4536 8.99944 15.3552 9.24679C16.2569 9.41169 16.9945 9.74149 17.6504 10.1537C18.306 10.566 18.7979 11.1431 19.1257 11.8852C19.4535 12.6272 19.6175 13.5342 19.6175 14.5236C19.6175 15.6779 19.3717 16.6673 18.7979 17.4093C18.306 18.1513 17.4864 18.811 16.5028 19.3057C17.8962 19.718 18.9617 20.46 19.6175 21.4493C20.2732 22.4388 20.683 23.6755 20.683 25.0772C20.683 26.2315 20.4372 27.2208 20.0274 28.0453C19.6175 28.8698 18.9617 29.612 18.224 30.1067C17.4864 30.6013 16.5847 31.0135 15.6011 31.261C14.6175 31.5083 13.6339 31.6732 12.6503 31.6732H1.66669V8.91699H12.4044ZM11.7487 18.1513C12.6503 18.1513 13.388 17.904 13.9618 17.4918C14.5355 17.0795 14.7814 16.3375 14.7814 15.4305C14.7814 14.9358 14.6995 14.4411 14.5355 14.1113C14.3716 13.7815 14.1257 13.5342 13.7978 13.2868C13.47 13.1219 13.1421 12.957 12.7323 12.8746C12.3224 12.7921 11.9126 12.7921 11.4208 12.7921H6.66669V18.1513H11.7487ZM11.9946 27.8805C12.4864 27.8805 12.9782 27.798 13.388 27.7155C13.7978 27.6332 14.2077 27.4682 14.5355 27.2208C14.8634 26.9735 15.1093 26.7262 15.3552 26.314C15.5192 25.9017 15.6831 25.407 15.6831 24.8298C15.6831 23.6755 15.3552 22.851 14.6995 22.2738C14.0437 21.7792 13.1421 21.5318 12.0765 21.5318H6.66669V27.8805H11.9946ZM27.8142 27.798C28.47 28.4577 29.4535 28.7875 30.765 28.7875C31.6667 28.7875 32.4864 28.54 33.142 28.1278C33.7979 27.6332 34.2077 27.1385 34.3717 26.6437H38.388C37.7322 28.6225 36.7487 30.0242 35.4372 30.9312C34.1257 31.7557 32.5684 32.2503 30.683 32.2503C29.3715 32.2503 28.224 32.003 27.1585 31.5907C26.0929 31.1785 25.2732 30.6013 24.5355 29.7768C23.7979 29.0348 23.224 28.1278 22.8962 27.056C22.4864 25.9842 22.3224 24.8298 22.3224 23.5107C22.3224 22.2738 22.4864 21.1197 22.8962 20.0477C23.306 18.9758 23.8799 18.069 24.6175 17.2445C25.3552 16.5024 26.2569 15.8428 27.2405 15.4305C28.306 15.0183 29.3715 14.7709 30.683 14.7709C32.0765 14.7709 33.306 15.0183 34.3717 15.5954C35.4372 16.1726 36.2569 16.8322 36.9125 17.8217C37.5684 18.7285 38.0602 19.8003 38.388 20.9547C38.5519 22.109 38.6339 23.2633 38.5519 24.5825H26.6667C26.6667 25.9017 27.1585 27.1385 27.8142 27.798ZM32.9782 19.1408C32.4044 18.5637 31.5027 18.2338 30.4372 18.2338C29.6995 18.2338 29.1257 18.3987 28.6339 18.6462C28.142 18.8935 27.8142 19.2232 27.4864 19.553C27.1585 19.8828 26.9945 20.2952 26.9125 20.7073C26.8307 21.1197 26.7487 21.4493 26.7487 21.7792H34.1257C33.9619 20.5425 33.5519 19.718 32.9782 19.1408ZM25.765 10.4835H34.9454V12.7097H25.765V10.4835Z"
-                            fill="#CEB7FA" />
-                    </svg>
-                </a> -->
-
                 <!-- Dribbble -->
                 <a href="https://dribbble.com/joelfah" title="Dribbble" tar
-                    class="rounded-full border-2 border-primaryColor border-dashed bg-primaryColor/10 text-primaryColor text-3xl flex items-center justify-center p-5">
+                    class="rounded-full border-2 border-primaryColor border-dashed bg-primaryColor/10 text-primaryColor text-3xl flex items-center justify-center p-5 hover:bg-hoverColor/10 hover:text-primaryColor hover:border-hoverColor transition-all duration-300 ease-in-out">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 40 40" fill="none">
                         <path
                             d="M33.3145 19.2857C33.1715 16.5749 32.2188 14.0788 30.6938 12.0346C30.2915 12.4731 29.7975 12.9493 29.1595 13.4857C27.6468 14.7573 25.8145 15.9048 23.639 16.8347C23.9163 17.4173 24.1715 17.9828 24.396 18.516L24.398 18.5205C24.442 18.6233 24.4798 18.7173 24.5535 18.9027C24.5632 18.9267 24.5722 18.9492 24.5808 18.9705C27.1035 18.6867 29.7627 18.7912 32.3415 19.1405C32.6843 19.1868 33.0083 19.2355 33.3145 19.2857ZM17.674 6.86851C17.9638 7.27669 18.267 7.71399 18.6338 8.25597C19.6548 9.76451 20.66 11.3562 21.6007 12.9915C21.7915 13.3233 21.9783 13.6545 22.1607 13.9849C24.1988 13.1829 25.8827 12.171 27.2397 11.0411C27.7885 10.5841 28.2305 10.1547 28.5672 9.78254C26.2502 7.83762 23.2618 6.66634 20 6.66634C19.2067 6.66634 18.4293 6.73564 17.674 6.86851ZM7.08778 16.6623C8.05243 16.6405 9.14113 16.582 10.4884 16.4583C13.1671 16.2123 15.9024 15.7705 18.5915 15.0876C17.6198 13.395 16.5648 11.7052 15.4909 10.0893C14.9747 9.31259 14.4726 8.58287 14.0914 8.04371C10.659 9.74322 8.06324 12.8773 7.08778 16.6623ZM9.63944 28.393C10.2852 27.4485 11.1344 26.3853 12.2633 25.2287C14.6867 22.746 17.5477 20.8127 20.8565 19.7452C20.9028 19.7315 20.934 19.7223 20.96 19.7147C20.685 19.1082 20.427 18.5672 20.1672 18.0567C17.1072 18.9475 13.8838 19.5047 10.6713 19.7933C9.10533 19.934 7.70009 19.9965 6.66668 20.007C6.66838 23.185 7.78193 26.103 9.63944 28.393ZM25.0075 32.3607C24.8335 31.4572 24.6115 30.4507 24.3165 29.2897C23.7815 27.185 23.1113 25.0197 22.2883 22.846C18.952 24.0568 16.2929 25.8287 14.2385 27.9412C13.2484 28.9592 12.5207 29.9225 12.044 30.7002C14.2649 32.3542 17.0182 33.333 20 33.333C21.771 33.333 23.4615 32.9877 25.0075 32.3607ZM28.1297 30.5687C30.6788 28.605 32.4975 25.7397 33.1087 22.4502C32.5422 22.3105 31.8233 22.1672 31.0327 22.0573C29.2927 21.8158 27.5023 21.7755 25.7348 22.0027C26.4888 24.127 27.107 26.2217 27.6013 28.2265C27.8172 29.102 27.993 29.8927 28.1297 30.5687ZM20 36.6663C10.7953 36.6663 3.33334 29.2043 3.33334 19.9997C3.33334 10.7949 10.7953 3.33301 20 3.33301C29.2047 3.33301 36.6667 10.7949 36.6667 19.9997C36.6667 29.2043 29.2047 36.6663 20 36.6663Z"
@@ -515,7 +440,7 @@ bg-[url('../../../static/images/body_bg.png')] bg-no-repeat bg-contain bg-top
 
                 <!-- Github -->
                 <a href="https://github.com/Joel-Fah" title="Github" tar
-                    class="rounded-full border-2 border-primaryColor border-dashed bg-primaryColor/10 text-primaryColor text-3xl flex items-center justify-center p-5">
+                    class="rounded-full border-2 border-primaryColor border-dashed bg-primaryColor/10 text-primaryColor text-3xl flex items-center justify-center p-5 hover:bg-hoverColor/10 hover:text-primaryColor hover:border-hoverColor transition-all duration-300 ease-in-out">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 40 40" fill="none">
                         <path
                             d="M20.0017 3.33301C10.7933 3.33301 3.33497 10.7913 3.33497 19.9997C3.33497 27.3747 8.1058 33.6038 14.7308 35.8122C15.5641 35.958 15.8766 35.458 15.8766 35.0205C15.8766 34.6247 15.8558 33.3122 15.8558 31.9163C11.6683 32.6872 10.585 30.8955 10.2516 29.958C10.0641 29.4788 9.25163 27.9997 8.5433 27.6038C7.95997 27.2913 7.12664 26.5205 8.52247 26.4997C9.83497 26.4788 10.7725 27.708 11.085 28.208C12.585 30.7288 14.9808 30.0205 15.9391 29.583C16.085 28.4997 16.5225 27.7705 17.0017 27.3538C13.2933 26.9372 9.4183 25.4997 9.4183 19.1247C9.4183 17.3122 10.0641 15.8122 11.1266 14.6455C10.96 14.2288 10.3766 12.5205 11.2933 10.2288C11.2933 10.2288 12.6891 9.79134 15.8766 11.9372C17.21 11.5622 18.6267 11.3747 20.0433 11.3747C21.46 11.3747 22.8767 11.5622 24.21 11.9372C27.3975 9.77051 28.7933 10.2288 28.7933 10.2288C29.71 12.5205 29.1267 14.2288 28.96 14.6455C30.0225 15.8122 30.6683 17.2913 30.6683 19.1247C30.6683 25.5205 26.7725 26.9372 23.0642 27.3538C23.6683 27.8747 24.1892 28.8747 24.1892 30.4372C24.1892 32.6663 24.1683 34.458 24.1683 35.0205C24.1683 35.458 24.4808 35.9788 25.3142 35.8122C32.0983 33.5218 36.6665 27.1602 36.6683 19.9997C36.6683 10.7913 29.21 3.33301 20.0017 3.33301Z"
@@ -525,7 +450,7 @@ bg-[url('../../../static/images/body_bg.png')] bg-no-repeat bg-contain bg-top
 
                 <!-- Youtube -->
                 <a href="https://youtube.com/@joelfah" title="Youtube" tar
-                    class="rounded-full border-2 border-primaryColor border-dashed bg-primaryColor/10 text-primaryColor text-3xl flex items-center justify-center p-5">
+                    class="rounded-full border-2 border-primaryColor border-dashed bg-primaryColor/10 text-primaryColor text-3xl flex items-center justify-center p-5 hover:bg-hoverColor/10 hover:text-primaryColor hover:border-hoverColor transition-all duration-300 ease-in-out">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 40 40" fill="none">
                         <path
                             d="M32.6782 11.6584C32.5512 11.1619 32.192 10.7873 31.7807 10.6718C31.0498 10.468 27.5017 10.0003 20.0017 10.0003C12.5016 10.0003 8.95419 10.4682 8.22041 10.6724C7.81293 10.7857 7.45383 11.1602 7.32516 11.6584C7.14383 12.3657 6.66829 15.3269 6.66829 20.0003C6.66829 24.6737 7.14383 27.635 7.32566 28.3443C7.45209 28.8388 7.81126 29.2133 8.22084 29.3283C8.95419 29.5325 12.5016 30.0003 20.0017 30.0003C27.5017 30.0003 31.0498 29.5327 31.7828 29.3283C32.1903 29.215 32.5495 28.8405 32.6782 28.3423C32.8595 27.635 33.335 24.667 33.335 20.0003C33.335 15.3337 32.8595 12.3657 32.6782 11.6584ZM35.907 10.8306C36.6683 13.8003 36.6683 20.0003 36.6683 20.0003C36.6683 20.0003 36.6683 26.2003 35.907 29.17C35.4828 30.8125 34.245 32.1033 32.676 32.5397C29.8285 33.3337 20.0017 33.3337 20.0017 33.3337C20.0017 33.3337 10.1806 33.3337 7.32728 32.5397C5.75243 32.0973 4.51464 30.8063 4.09623 29.17C3.33496 26.2003 3.33496 20.0003 3.33496 20.0003C3.33496 20.0003 3.33496 13.8003 4.09623 10.8306C4.52044 9.18821 5.75824 7.89729 7.32728 7.46093C10.1806 6.66699 20.0017 6.66699 20.0017 6.66699C20.0017 6.66699 29.8285 6.66699 32.676 7.46093C34.2508 7.90336 35.4887 9.19426 35.907 10.8306ZM16.6683 25.8337V14.167L26.6683 20.0003L16.6683 25.8337Z"
@@ -535,7 +460,7 @@ bg-[url('../../../static/images/body_bg.png')] bg-no-repeat bg-contain bg-top
 
                 <!-- Google Developer -->
                 <a href="https://g.dev/joelfah" title="Google Developer" tar
-                    class="rounded-full border-2 border-primaryColor border-dashed bg-primaryColor/10 text-primaryColor text-3xl flex items-center justify-center p-5">
+                    class="rounded-full border-2 border-primaryColor border-dashed bg-primaryColor/10 text-primaryColor text-3xl flex items-center justify-center p-5 hover:bg-hoverColor/10 hover:text-primaryColor hover:border-hoverColor transition-all duration-300 ease-in-out">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 40 40" fill="none">
                         <path
                             d="M8.48869 17.5051C5.5745 15.7331 5.37496 16.1524 10.6276 13.0146C14.4771 10.7153 15.6141 10.5034 16.882 11.8495C18.5886 13.6611 17.8091 15.4948 14.473 17.5227C11.4174 19.3785 11.5754 19.3785 8.48869 17.5051Z"
@@ -559,12 +484,12 @@ bg-[url('../../../static/images/body_bg.png')] bg-no-repeat bg-contain bg-top
     <div class="-z-1">
         <div
             class="rotate-6 shadow-[0_4px_15px_rgb(0,0,0,0.8)] flex items-center justify-center gap-3 bg-[#F79009] absolute top-96 -right-5 -left-5 py-2 text-darkBlue font-semibold">
-            {% for i in 1|get_range:15 %}
+            {% for i in 1|get_range:30 %}
             {% if i|modulo:2 %}
             <!-- <div class="w-1.5 h-1.5 whitespace-nowrap rounded-full bg-darkBlue"></div> -->
-            <i class="iconoir-{{ tool }}"></i>
+            <i class="iconoir-{{ emoji }}"></i>
             {% else %}
-            <span class="whitespace-nowrap">Profile under construction</span>
+            <span class="whitespace-nowrap">Don't blush too much</span>
             {% endif %}
             {% endfor %}
         </div>
@@ -574,12 +499,12 @@ bg-[url('../../../static/images/body_bg.png')] bg-no-repeat bg-contain bg-top
 
         <div
             class="-rotate-6 shadow-[0_4px_15px_rgb(0,0,0,0.8)] flex items-center justify-center gap-3 bg-[#F79009] absolute top-[30rem] -right-5 -left-5 py-2 text-darkBlue font-semibold">
-            {% for i in 1|get_range:15 %}
+            {% for i in 1|get_range:30 %}
             {% if i|modulo:2 %}
             <!-- <div class="w-1.5 h-1.5 whitespace-nowrap rounded-full bg-darkBlue"></div> -->
             <i class="iconoir-{{ tool }}"></i>
             {% else %}
-            <span class="whitespace-nowrap">Profile under construction</span>
+            <span class="whitespace-nowrap">Projects under construction</span>
             {% endif %}
             {% endfor %}
         </div>

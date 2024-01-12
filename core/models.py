@@ -71,6 +71,7 @@ class Certification(models.Model):
 class Volunteering(models.Model):
     title = models.CharField(max_length=255)
     description = tinymce_models.HTMLField()
+    organisation = models.CharField(max_length=255)
     image = models.ImageField(upload_to='achievements/volunteering/', blank=True, null=True)
     link = models.URLField(max_length = 255, blank=True, null=True)
     
