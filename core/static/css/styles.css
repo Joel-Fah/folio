@@ -3,3 +3,14 @@ body.page-transition {
     opacity: 0;
     transition: opacity 0.5s ease-out;
 }
+
+span#carret {
+    border-right: .05em solid;
+    animation: caret 1s steps(1) infinite;
+}
+
+@keyframes caret {
+    50% {
+        border-color: transparent;
+    }
+}

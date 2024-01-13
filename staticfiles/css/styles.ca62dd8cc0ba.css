@@ -1,5 +1,0 @@
-/* Add page transition styles */
-body.page-transition {
-    opacity: 0;
-    transition: opacity 0.5s ease-out;
-}
