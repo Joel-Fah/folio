@@ -3,7 +3,7 @@ import random
 from typing import Any
 from django.shortcuts import render
 from django.utils import timezone
-from django.views.generic import TemplateView, DetailView
+from django.views.generic import TemplateView, DetailView, ListView
 from .models import Project, Tag, AcademicAchievement, Certification, Volunteering
 
 # Create your views here.
@@ -26,6 +26,15 @@ class ProjectDetailView(DetailView):
     def get_queryset(self):
         return Project.objects.filter(id=self.kwargs['id'], slug=self.kwargs['slug'])
 
+class WorksView(ListView):
+    model = Project
+    template_name = 'projects_list.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["tags"] = Tag.objects.all()
+        return context
+    
 
 class AboutView(TemplateView):
     template_name = 'about.html'

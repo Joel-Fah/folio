@@ -82,7 +82,7 @@ Home
     <div class="flex items-center gap-5 justify-between my-7">
       <h2 class="font-bold m-0 p-0 whitespace-nowrap text-2xl lg:text-4xl">View works</h2>
       <hr class="w-full border-yellowWhite/50">
-      <a href=""
+      <a href="{% url 'core:projects' %}"
               class="page-link ring mx-1 px-2 py-0.5 rounded-md text-yellowWhite hover:bg-hoverColor transition-all duration-300 ease-in-out whitespace-nowrap">See them all</a>
     </div>
 
@@ -116,7 +116,7 @@ Home
             alt="{{ project.name }}" />
 
           <div
-            class="absolute items-end top-0 bottom-0 right-0 left-0 inset-x-[15%] hidden py-10 pb-14 md:flex md:flex-col md:items-center md:justify-end bg-gradient-to-b from-[rgb(0,0,0,0)] via-[rgb(0,0,0,0.5)] to-[rgb(0,0,0,1)] from-50%">
+            class="absolute items-end top-0 bottom-0 right-0 left-0 inset-x-[15%] hidden py-10 pb-14 md:flex md:flex-col md:items-center md:justify-end bg-gradient-to-b from-[rgb(12,4,38,0)] via-[rgb(12,4,38,0.5)] to-[rgb(12,4,38,1)] from-60%">
             <h3 class="font-medium m-0 p-0 text-lg lg:text-2xl my-2">{{ project.name }}</h3>
             <a href="{% url 'core:details' project.id project.slug %}"
               class="page-link group hover:gap-5 inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg bg-hoverColor hover:bg-blue-800 focus:ring-gray-700 transition-all duration-300 ease-in-out">

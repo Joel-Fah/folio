@@ -51,8 +51,8 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{# {% if not url_name == 'works' %} {% url 'core:works' %} {% endif %} #}"
-                            class="{% if not url_name == 'works' %} page-link {% endif %} max-sm:whitespace-nowrap block {% if url_name == 'works' %} ring bg-hoverColor/10 font-medium md:text-primaryColor md:outline-primaryColor {% else %} bg-transparent max-sm:text-yellowWhite/70 md:hover:text-yellowWhite/70 md:hover:bg-yellowWhite/10 md:outline-transparent {% endif %} rounded-md md:ring-0 md:outline md:outline-1 px-3 py-1.5 md:py-1 transition-all duration-300 ease-in-out">
+                        <a href="{% if url_name == 'projects' %} #top_projects {% else %} {% url 'core:projects' %} {% endif %}"
+                            class="{% if not url_name == 'projects' %} page-link {% endif %} max-sm:whitespace-nowrap block {% if url_name == 'projects' %} ring bg-hoverColor/10 font-medium md:text-primaryColor md:outline-primaryColor {% else %} bg-transparent max-sm:text-yellowWhite/70 md:hover:text-yellowWhite/70 md:hover:bg-yellowWhite/10 md:outline-transparent {% endif %} rounded-md md:ring-0 md:outline md:outline-1 px-3 py-1.5 md:py-1 transition-all duration-300 ease-in-out">
                             ✊🏽 Works
                         </a>
                     </li>
