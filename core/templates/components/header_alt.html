@@ -63,7 +63,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{# {% if not url_name == 'connect' %} {% url 'core:connect' %} {% endif %} #}"
+                        <a href="{% if url_name == 'connect' %} #top_connect {% else %} {% url 'core:connect' %} {% endif %}"
                             class="{% if not url_name == 'connect' %} page-link {% endif %} max-sm:whitespace-nowrap block {% if url_name == 'connect' %} ring bg-hoverColor/10 font-medium md:text-primaryColor md:outline-primaryColor {% else %} bg-transparent max-sm:text-yellowWhite/70 md:hover:text-yellowWhite/70 md:hover:bg-yellowWhite/10 md:outline-transparent {% endif %} rounded-md md:ring-0 md:outline md:outline-1 px-3 py-1.5 md:py-1 transition-all duration-300 ease-in-out">
                             🤙🏽 Connect
                         </a>
