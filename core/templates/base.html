@@ -39,12 +39,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css" />
 
     <!-- Styles ~ Tailwind CSS-->
+    {% block styles %}{% endblock styles %}
     {% tailwind_css %}
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <link rel="stylesheet" href="{% static 'css/dist/styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
-    {% block styles %}{% endblock styles %}
 
     <!-- Preoad JS ~ Jquery -->
     <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>

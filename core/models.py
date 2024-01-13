@@ -5,12 +5,19 @@ from slugify import slugify
 # Create your models here.
 
 class Project(models.Model):
+    
+    class Filters(models.TextChoices):
+        DESIGN = 'design', 'ui.ux design'
+        GRAPHICS = 'graphics', 'graphics'
+        DEVELOPMENT = 'development', 'development'
+    
     name = models.CharField(max_length = 150, blank=False, null=False)
     content = tinymce_models.HTMLField()
     client = models.CharField(max_length = 150)
     role = models.CharField(max_length = 150)
     link = models.URLField(max_length = 200, blank=True, null=True)
     thumbnail = models.ImageField(upload_to='thumbnails/')
+    category = models.CharField(max_length=255, choices=Filters.choices, default=Filters.DESIGN)
     
     started_at = models.DateTimeField(auto_now=False, auto_now_add=False)
     ended_at = models.DateTimeField(auto_now=False, auto_now_add=False)

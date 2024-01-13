@@ -3,7 +3,7 @@ import random
 from typing import Any
 from django.shortcuts import render
 from django.utils import timezone
-from django.views.generic import TemplateView, DetailView
+from django.views.generic import TemplateView, DetailView, ListView
 from .models import Project, Tag, AcademicAchievement, Certification, Volunteering
 
 # Create your views here.
@@ -26,6 +26,15 @@ class ProjectDetailView(DetailView):
     def get_queryset(self):
         return Project.objects.filter(id=self.kwargs['id'], slug=self.kwargs['slug'])
 
+class WorksView(ListView):
+    model = Project
+    template_name = 'projects_list.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["tags"] = Tag.objects.all()
+        return context
+    
 
 class AboutView(TemplateView):
     template_name = 'about.html'
@@ -49,8 +58,8 @@ quotes = [
     "Embark on your journey of productivity not with idle talk but with purposeful action. The key to progress lies not in mere discussions but in the relentless execution of your plans, transforming ideas into tangible achievements. -- <strong>Walt Disney</strong>",
     "Success is not an accidental feat but a deliberate act of disciplined productivity. Those who thrive are not merely seekers of success; they are the architects of their own accomplishments, diligently building the foundations of their dreams. -- <strong>Henry David Thoreau</strong>",
     "When you consider the importance of Word-of-Mouth, referrals, recommendations, and knowledge-sharing do you even have a choice? Your network is your everything. -- <strong>Vedran Rasic</strong>",
-    "Technology is nothing. What's important is that you have faith in people, that they're basically good and smart, and if you give them tools, they'll do wonderful things with them.” -- <strong>Steve Jobs</strong>",
-    "The true value of networking doesn't come from how many people we can meet but rather how many people we can introduce to others.” -- <strong>Simon Sinek</strong>",
+    "Technology is nothing. What's important is that you have faith in people, that they're basically good and smart, and if you give them tools, they'll do wonderful things with them. -- <strong>Steve Jobs</strong>",
+    "The true value of networking doesn't come from how many people we can meet but rather how many people we can introduce to others. -- <strong>Simon Sinek</strong>",
     "Networking is not about just connecting people. It's about connecting people with people, people with ideas, and people with opportunities. -- <strong>Michele Jennae</strong>",
     "Strive for a pixel-perfect impact in your career, where every detail contributes to personal and societal growth. Each purposeful action and positive influence shapes a meaningful and impactful journey, resembling a masterpiece on the canvas of our careers. -- <strong>My humble self</strong>"
 ]
