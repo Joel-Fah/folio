@@ -41,7 +41,7 @@ class AboutView(TemplateView):
         context['volunteerings'] = Volunteering.objects.all()
         return context
 
-
+# A list of quotes to be displayed on the connect page
 quotes = [
     "In the tapestry of life, every thread of connection weaves a unique pattern. Your network, forged through meaningful relationships, is not just a collection of contacts—it's the very fabric of your success, a testament to your net worth. -- <strong>Porter Gale</strong>",
     "Success isn't merely a monetary pursuit; it's a purposeful journey of making a lasting impact. Strive not only for personal gain but for the greater good, as the true measure of success lies in the positive differences we create in the lives of others. -- Anonymous",
