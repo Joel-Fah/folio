@@ -38,7 +38,10 @@
     <!-- Icons ~ Iconoir -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css" />
 
-    <!-- Styles ~ Tailwind CSS-->
+    <!-- Styles ~ AOS, Tailwind CSS-->
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     {% block styles %}{% endblock styles %}
     {% tailwind_css %}
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
@@ -64,7 +67,7 @@
     </main>
 
     <!-- Footer Section -->
-    <footer id="footer" class="section h-dvh max-w-screen-xl mx-auto py-3 max-md:px-4 max-lg:px-8 max-xl:px-12 flex flex-col items-center justify-evenly">
+    <footer id="footer" class="section h-dvh max-w-screen-xl mx-auto py-3 max-md:px-4 max-lg:px-8 max-xl:px-12 flex flex-col items-center justify-evenly" data-aos="zoom-out-up" data-aos-duration="1000" data-aos-anchor-placement="top-center"  data-aos-delay="100">
         <div class="flex flex-col gap-10 items-center justify-center pt-20 pb-12">
             <a href="mailto:joelfah2003@gmail.com"
                 class="flex flex-row-reverse py-5 px-7 items-center justify-center gap-2 font-medium rounded-full text-greenSuccess bg-greenSuccess/10 ease-in-out duration-300 hover:gap-4">
@@ -102,6 +105,9 @@
         </div>
     </footer>
 
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <!-- Flowbite JS script -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
 
@@ -111,6 +117,11 @@
     {% endblock javascript %}
 
     <script src="{% static 'js/page_transition.js' %}"></script>
+    
+    <!-- AOS initialisation -->
+    <script>
+        AOS.init();
+    </script>
 
 </body>
 
