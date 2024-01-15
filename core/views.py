@@ -107,7 +107,7 @@ class MessageView(ListView):
                 new_message = form.save()
 
                 # Send out success message
-                message = format_html("Thanks <strong>{}</strong> for your message.<br> <a href='{}' target='_blank' class='page-link block font-semibold underline hover:no-underline'>{}</a>.",
+                message = format_html("Thanks <strong>{}</strong> for your message.<br> <a href='{}' target='_blank' class='page-link block font-semibold underline hover:no-underline'>{}</a>",
                                       name,
                                       reverse('core:message_details',
                                               args=[new_message.id]),
