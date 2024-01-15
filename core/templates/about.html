@@ -65,7 +65,7 @@ bg-[url(https://s3-alpha-sig.figma.com/img/7631/d33d/a746fa24f8da83b77f65f0f5adf
             {% for i in 1|get_range:15 %}
             {% if i|modulo:2 %}
             <!-- <div class="w-1.5 h-1.5 whitespace-nowrap rounded-full bg-darkBlue"></div> -->
-            <i class="iconoir-{{ tool }}"></i>
+            <i class="iconoir-{{ emoji }}"></i>
             {% else %}
             <span class="whitespace-nowrap">Website under construction</span>
             {% endif %}
@@ -89,7 +89,7 @@ bg-[url(https://s3-alpha-sig.figma.com/img/7631/d33d/a746fa24f8da83b77f65f0f5adf
 <!-- Only visible on larger screens -->
 <div id="top_about" class="relative mt-20 overflow-x-hidden max-lg:hidden">
     <div class="grid-cols-12 max-w-[80%] mx-auto z-1">
-        <div class="flex flex-col gap-3">
+        <div class="flex flex-col gap-3" data-aos="fade-down" data-aos-delay="100" data-aos-duration="600">
             <h1 class="font-extrabold text-8xl">Dejon Fah <br> Joël Xavier</h1>
             <span class="font-medium text-3xl text-primaryColor">a.k.a @joelfah</span>
         </div>
@@ -113,9 +113,10 @@ bg-[url(https://s3-alpha-sig.figma.com/img/7631/d33d/a746fa24f8da83b77f65f0f5adf
             <div class="flex items-center justify-center gap-5">
                 <img class="w-1/2 grayscale transition-all duration-300 ease-in-out hover:grayscale-0"
                     src="{% static 'images/about_img3.png' %}"
-                    alt="Screen captures of Flutter, Figma and Django websites, showcasing my main technical skills.">
+                    alt="Screen captures of Flutter, Figma and Django websites, showcasing my main technical skills."
+                    data-aos="fade-up-right" data-aos-delay="100" data-aos-duration="600">
 
-                <div class=" flex flex-col gap-7">
+                <div class=" flex flex-col gap-7" data-aos="fade-left" data-aos-delay="100" data-aos-duration="600">
                     <p>
                         I ain't anymore passionate about anything nor anyone. This life has shown me levels shaa!! No
                         more
@@ -162,7 +163,7 @@ bg-[url(https://s3-alpha-sig.figma.com/img/7631/d33d/a746fa24f8da83b77f65f0f5adf
                 <hr class="w-full border-yellowWhite/50">
             </div>
 
-            <div class="communities w-[110%] flex flex-col items-end gap-6 absolute -left-3 mx-auto">
+            <div class="communities w-[110%] flex flex-col items-end gap-6 absolute -left-3 mx-auto" data-aos="fade-up" data-aos-delay="100" data-aos-duration="600">
                 <div class="top grid grid-cols-4 gap-4 scale-105 me-40">
                     <div class="max-h-[135px] bg-primaryColor/10 opacity-50 rounded-3xl border-2 border-dashed"></div>
 
@@ -226,7 +227,7 @@ bg-[url(https://s3-alpha-sig.figma.com/img/7631/d33d/a746fa24f8da83b77f65f0f5adf
             <hr class="w-full border-yellowWhite/50">
         </div>
 
-        <div class="w-full bg-darkBlue rounded-lg shadow">
+        <div class="w-full bg-darkBlue rounded-lg shadow" data-aos="fade-up" data-aos-delay="100" data-aos-duration="600">
             <!-- Navigation -->
             <ul class="flex flex-wrap text-sm font-medium text-center border-2 border-yellowWhite/50 rounded-3xl bg-navbarBarBg shadow-2xl"
                 id="defaultTab" data-tabs-toggle="#defaultTabContent" role="tablist">

@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.admin.widgets import AdminFileWidget
 from django.utils.html import format_html
 from django.db import models
-from .models import Project, Tag, AcademicAchievement, Certification, Volunteering
+from .models import Project, Tag, AcademicAchievement, Certification, Volunteering, Message
 
 # Register your models here.
 
@@ -63,6 +63,11 @@ class VolunteeringAdmin(admin.ModelAdmin):
     formfield_overrides = {
         models.ImageField: {"widget": CustomAdminFileWidget}
     }
+    
+class MessageAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name', 'is_visible']
+    search_fields = ['name', 'message']
+    list_filter = ['name']
 
 # Register in admin dashboard
 admin.site.register(Project, ProjectAdmin)
@@ -70,3 +75,4 @@ admin.site.register(Tag, TagAdmin)
 admin.site.register(AcademicAchievement, AcademicAchievementAdmin)
 admin.site.register(Certification, CertificationAdmin)
 admin.site.register(Volunteering, VolunteeringAdmin)
+admin.site.register(Message, MessageAdmin)

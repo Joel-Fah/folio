@@ -1,10 +1,9 @@
 import json
 import random
-from typing import Any
 from django.shortcuts import render
 from django.utils import timezone
 from django.views.generic import TemplateView, DetailView, ListView
-from .models import Project, Tag, AcademicAchievement, Certification, Volunteering
+from .models import Project, Tag, AcademicAchievement, Certification, Volunteering, Message
 
 # Create your views here.
 
@@ -75,6 +74,22 @@ class ConnectView(TemplateView):
         context["quote"] = ("|").join(quotes)
         return context
     
+    
+class MessageView(ListView):
+    template_name = 'messages_list.html'
+    model = Message
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["message"] = random.choice(Message.objects.all())
+        context["tool"] = random.choice(['angle-tool', 'hammer', 'tools', 'ruler-combine',
+                                        'color-filter', 'color-picker', 'frame-alt-empty', 'crop', 'component'])
+        context["emoji"] = random.choice(
+            ['emoji-satisfied', 'emoji-surprise-alt', 'emoji-surprise', 'emoji-blink-left', 'emoji-blink-right'])
+        return context
+    
+            
+
 
 # Custom error pages (404, 500)
 

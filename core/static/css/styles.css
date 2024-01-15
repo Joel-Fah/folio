@@ -14,3 +14,12 @@ span#carret {
         border-color: transparent;
     }
 }
+
+#drawer {
+    transition: transform 0.3s ease;
+    transform: translateY(100%);
+}
+
+#drawer.hidden {
+    transform: translateY(0);
+}
