@@ -96,4 +96,4 @@ class Message(models.Model):
     
     is_visible = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now=True, auto_now_add=False)
-    updated_at = models.DateTimeField(auto_now=False, auto_now_add=False)
+    updated_at = models.DateTimeField(auto_now=True, auto_now_add=False)

@@ -1,9 +1,13 @@
 import json
 import random
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.utils import timezone
+from django.contrib import messages
+from django.utils.html import format_html
 from django.views.generic import TemplateView, DetailView, ListView
 from .models import Project, Tag, AcademicAchievement, Certification, Volunteering, Message
+from .forms import MessageForm
 
 # Create your views here.
 
@@ -25,15 +29,16 @@ class ProjectDetailView(DetailView):
     def get_queryset(self):
         return Project.objects.filter(id=self.kwargs['id'], slug=self.kwargs['slug'])
 
+
 class WorksView(ListView):
     model = Project
     template_name = 'projects_list.html'
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["tags"] = Tag.objects.all()
         return context
-    
+
 
 class AboutView(TemplateView):
     template_name = 'about.html'
@@ -48,6 +53,7 @@ class AboutView(TemplateView):
         context['certifications'] = Certification.objects.all()
         context['volunteerings'] = Volunteering.objects.all()
         return context
+
 
 # A list of quotes to be displayed on the connect page
 quotes = [
@@ -66,29 +72,70 @@ quotes = [
 # Shuffle list
 random.shuffle(quotes)
 
+
 class ConnectView(TemplateView):
     template_name = 'connect.html'
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["quote"] = ("|").join(quotes)
         return context
-    
-    
+
+
 class MessageView(ListView):
     template_name = 'messages_list.html'
     model = Message
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["message"] = random.choice(Message.objects.all())
+        context["form"] = MessageForm()
         context["tool"] = random.choice(['angle-tool', 'hammer', 'tools', 'ruler-combine',
                                         'color-filter', 'color-picker', 'frame-alt-empty', 'crop', 'component'])
         context["emoji"] = random.choice(
             ['emoji-satisfied', 'emoji-surprise-alt', 'emoji-surprise', 'emoji-blink-left', 'emoji-blink-right'])
         return context
-    
-            
+
+    def post(self, request, *args, **kwargs):
+        if request.method == 'POST':
+            form = MessageForm(request.POST)
+
+            if form.is_valid():
+                name = form.cleaned_data['name']
+
+                # Save message in DB
+                new_message = form.save()
+
+                # Send out success message
+                message = format_html("Thanks <strong>{}</strong> for your message.<br> <a href='{}' target='_blank' class='page-link block font-semibold underline hover:no-underline'>{}</a>.",
+                                      name,
+                                      reverse('core:message_details',
+                                              args=[new_message.id]),
+                                      "View message"
+                                      )
+
+                messages.success(
+                    request,
+                    message
+                )
+
+                return redirect('core:messages')
+            else:
+                form = MessageForm()
+
+                format_html(messages.error(
+                    request,
+                    f'Oops! a problem occurred when uploading your message.'
+                ))
+        return render(request, self.template_name, {'form': form})
+
+
+class MessageDetailView(DetailView):
+    model = Message
+    template_name = 'messages_detail.html'
+
+    def get_queryset(self):
+        return Message.objects.filter(id=self.kwargs['pk'])
 
 
 # Custom error pages (404, 500)
