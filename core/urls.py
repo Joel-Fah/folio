@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import HomeView, ProjectDetailView, WorksView, AboutView, ConnectView
+from .views import HomeView, ProjectDetailView, WorksView, AboutView, ConnectView, MessageView
 
 # Create your urls here.
 
@@ -11,4 +11,5 @@ urlpatterns = [
     path('projects/<int:id>/<slug:slug>/', ProjectDetailView.as_view(), name='details'),
     path('about/', AboutView.as_view(), name='about'),
     path('connect/', ConnectView.as_view(), name='connect'),
+    path('messages/', MessageView.as_view(), name='messages'),
 ]

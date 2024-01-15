@@ -88,3 +88,12 @@ class Volunteering(models.Model):
     
     def __str__(self):
         return self.title
+    
+class Message(models.Model):
+    name = models.CharField(max_length=255, blank=True, null=True, default="Anonymous")
+    message = tinymce_models.HTMLField()
+    social = models.URLField(max_length=255, blank=True, null=True)
+    
+    is_visible = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now=True, auto_now_add=False)
+    updated_at = models.DateTimeField(auto_now=False, auto_now_add=False)
