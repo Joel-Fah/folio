@@ -12,7 +12,7 @@ class Project(models.Model):
         DEVELOPMENT = 'development', 'development'
     
     name = models.CharField(max_length = 150, blank=False, null=False)
-    content = tinymce_models.HTMLField()
+    content = tinymce_models.HTMLField(blank=True, null=True)
     client = models.CharField(max_length = 150)
     role = models.CharField(max_length = 150)
     link = models.URLField(max_length = 200, blank=True, null=True)
