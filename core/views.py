@@ -28,6 +28,40 @@ class ProjectDetailView(DetailView):
 
     def get_queryset(self):
         return Project.objects.filter(id=self.kwargs['id'], slug=self.kwargs['slug'])
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        project = Project.objects.get(id=self.kwargs['id'], slug=self.kwargs['slug'])
+        context["duration"] = self.calculate_duration(project.started_at, project.ended_at)
+        return context
+    
+    def calculate_duration(self, started_at, ended_at):
+        # Calculate the difference between the end and start dates
+        difference = ended_at - started_at
+
+        # Calculate the duration in days
+        days = difference.days
+        
+        # Calculate the duration in weeks
+        weeks = days // 7
+        
+        # Calculate the duration in months
+        months = days // 30
+        
+        # Calculate the duration in years
+        years = days // 365
+
+        # Determine the lowest readable value
+        if years > 0:
+            duration = f'{years} {"year" if years == 1 else "years"}'
+        elif months > 0:
+            duration = f'{months} {"month" if months == 1 else "months"}'
+        elif weeks > 0:
+            duration = f'{weeks} {"week" if weeks == 1 else "weeks"}'
+        else:
+            duration = f'{days} {"day" if days == 1 else "days"}'
+        
+        return duration
 
 
 class WorksView(ListView):

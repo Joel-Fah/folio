@@ -19,6 +19,55 @@
 <!-- Body of the page -->
 {% block body %}
   <div class="container max-w-screen-xl mx-auto my-20" data-aos="fade-up" data-aos-delay="300" data-aos-duration="600">
+
+    <h2 class="font-bold m-0 p-0 whitespace-nowrap text-2xl lg:text-4xl"> {{ object.name }} </h2>
+    <div class="h-4"></div>
+    
+    <!-- Project Details -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="flex justify-between items-center rounded-lg bg-primaryColor/10 p-2 px-4 text-sm">
+        <span class="text-yellowWhite/50">Client:</span>
+        <span>{{ object.client }}</span>
+      </div>
+
+      <div class="flex justify-between items-center rounded-lg bg-primaryColor/10 p-2 px-4 text-sm">
+        <span class="text-yellowWhite/50">Role:</span>
+        <span>{{ object.role }}</span>
+      </div>
+
+      <div class="flex justify-between items-center rounded-lg bg-primaryColor/10 p-2 px-4 text-sm">
+        <span class="text-yellowWhite/50">Link:</span>
+        <a target="_blank" class="hover:text-hoverColor hover:underline transition-all duration-300 ease-in-out whitespace-nowrap" href="{{ object.link }}">View project</a>
+      </div>
+
+      <div class="flex justify-between items-center rounded-lg bg-primaryColor/10 p-2 px-4 text-sm capitalize">
+        <span class="text-yellowWhite/50">Category:</span>
+        <span>{{ object.category }}</span>
+      </div>
+
+      <div class="flex justify-between items-center rounded-lg bg-primaryColor/10 p-2 px-4 text-sm">
+        <span class="text-yellowWhite/50">Started on:</span>
+        <span>{{ object.started_at }}</span>
+      </div>
+
+      <div class="flex justify-between items-center rounded-lg bg-primaryColor/10 p-2 px-4 text-sm">
+        <span class="text-yellowWhite/50">Ended on:</span>
+        <span>{{ object.ended_at }}</span>
+      </div>
+
+      <div class="flex justify-between items-center rounded-lg bg-primaryColor/10 p-2 px-4 text-sm">
+        <span class="text-yellowWhite/50">Last updated on:</span>
+        <span>{{ object.updated_at }}</span>
+      </div>
+
+      <div class="flex justify-between items-center rounded-lg bg-primaryColor/10 p-2 px-4 text-sm">
+        <span class="text-yellowWhite/50">Duration:</span>
+        <span>{{ duration }}</span>
+      </div>
+    </div>
+
+    <div class="h-4"></div>
+
     {{ object.content|safe }}
   </div>
 {% endblock body %}
