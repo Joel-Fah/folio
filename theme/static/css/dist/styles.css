@@ -1435,24 +1435,16 @@ select {
   list-style-type: none;
 }
 
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
 .grid-cols-12 {
   grid-template-columns: repeat(12, minmax(0, 1fr));
 }
 
 .grid-cols-4 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
-.grid-cols-2 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.\!grid-cols-2 {
-  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-}
-
-.grid-cols-1 {
-  grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
 .flex-row {
@@ -1553,12 +1545,6 @@ select {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.75rem * var(--tw-space-x-reverse));
   margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
-}
-
-.space-y-3 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
 }
 
 .\!overflow-hidden {
@@ -1807,11 +1793,6 @@ select {
 
 .bg-yellowWhite\/10 {
   background-color: rgb(250 241 214 / 0.1);
-}
-
-.bg-primaryColor {
-  --tw-bg-opacity: 1;
-  background-color: rgb(206 183 250 / var(--tw-bg-opacity));
 }
 
 .bg-\[linear-gradient\(180deg\2c rgba\(12\2c 4\2c 38\2c 0\.00\)_0\%\2c \#0C0426_37\.2\%\)\] {
