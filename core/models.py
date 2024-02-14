@@ -36,7 +36,7 @@ class Project(models.Model):
         return self.name
     
 class Tag(models.Model):
-    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='projects')
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='projects', blank=True, null=True)
     name = models.CharField(max_length = 150, blank=False, null=False)
 
     created_at = models.DateTimeField(auto_now=True, auto_now_add=False)
