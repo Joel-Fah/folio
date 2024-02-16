@@ -60,7 +60,7 @@ Messages
         </div>
 
         <div class="flex items-center gap-5">
-            <a href="button" data-modal-target="message-modal" data-modal-toggle="message-modal"
+            <a href="button"
                 class="page-link border border-hoverColor bg-blue-600 hover:bg-blue-700 px-4 py-2 text-sm rounded-lg focus:ring transition-all duration-300 ease-in-out">
                 Back home
             </a>
@@ -127,6 +127,7 @@ Messages
     </div>
 </div>
 
+<!-- For larger screens -->
 <div id="top_messages"
     class="container max-lg:hidden flex items-center justify-center max-w-[95%] lg:max-w-screen-xl min-h-dvh mx-auto my-20 bg-center bg-cover bg-[url(https://s3-alpha-sig.figma.com/img/60e3/b9f6/ac74023fae9d7a2f1ac0267ee0f441e4?Expires=1705881600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Aq6e946y1zFGzAJI8yB1CcQ1rC6ranEhvYHoVd0-8KYc4ZPdD18nDSansz35AQPpFAO6VoTd2vpnngA9Rc5PRl56~TQMtJ3H7siMULbfwF66kaemq1EhmDMnUimLt8Z5v5PVQg2abzQAWyVw5tdSpIJjulzZ5eOA3BSlAyZoRghv-ZhNyUrzQf7svK8La~OMhGkth5nh1nkBOpiGOZvLtmr49hNHdrIl~1WHzppfl4X-xqMEBLt5D~gj44J19oJlsWxdsV2Wo4ifGCdQ8koOxPsRxo3ihf6rHL5WHrw0zx6Z7gsr3N6x2ADimjwN~F2SXMJ5XOrDETO2S3w--EvVlQ__)]">
 
@@ -219,7 +220,7 @@ Messages
 
 
     <div
-        class="fixed top-6 left-0 right-0 gap-5 max-w-[calc(100%-2rem)] lg:max-w-[80%] mx-auto flex items-center justify-between bg-primaryColor/10 p-5 rounded-3xl shadow-2xl backdrop-blur-md">
+        class="fixed z-50 top-6 left-0 right-0 gap-5 max-w-[calc(100%-2rem)] lg:max-w-[80%] mx-auto flex items-center justify-between bg-primaryColor/10 p-5 rounded-3xl shadow-2xl backdrop-blur-md">
         <div class="flex items-center justify-start gap-5">
             <a href="{% if url_name == 'home' %} #hero {% else %} {% url 'core:home' %} {% endif %}"
                 class="{% if not url_name == 'home' %} page-link {% endif %} flex items-center justify-center rtl:space-x-reverse">
@@ -267,15 +268,15 @@ Messages
         </div>
     </div>
 
-    <div class="absolute hidden lg:block left-72 top-60">
+    <div class="absolute -z-1 hidden lg:block left-64 top-60">
         <i class="iconoir-quote text-9xl"></i>
     </div>
 
-    <div class="absolute hidden lg:block right-72 bottom-32 scale-x-[-1]">
+    <div class="absolute -z-1 hidden lg:block right-64 bottom-32 scale-x-[-1]">
         <i class="iconoir-quote text-9xl"></i>
     </div>
 
-    <blockquote class=" max-w-1/2 md:w-1/2 text-sm md:text-xl text-justify flex flex-col gap-2 items-end">
+    <blockquote class="max-w-1/2 md:w-1/2 z-0 text-sm md:text-xl text-justify flex flex-col gap-2 items-end">
         <p class=""> {{ message.message|safe }} </p>
         <cite class="text-hoverColor font-['Urbanist'] font-semibold flex flex-col items-end">
             {{ message.name }}

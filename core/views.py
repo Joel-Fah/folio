@@ -28,26 +28,28 @@ class ProjectDetailView(DetailView):
 
     def get_queryset(self):
         return Project.objects.filter(id=self.kwargs['id'], slug=self.kwargs['slug'])
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        project = Project.objects.get(id=self.kwargs['id'], slug=self.kwargs['slug'])
-        context["duration"] = self.calculate_duration(project.started_at, project.ended_at)
+        project = Project.objects.get(
+            id=self.kwargs['id'], slug=self.kwargs['slug'])
+        context["duration"] = self.calculate_duration(
+            project.started_at, project.ended_at)
         return context
-    
+
     def calculate_duration(self, started_at, ended_at):
         # Calculate the difference between the end and start dates
         difference = ended_at - started_at
 
         # Calculate the duration in days
         days = difference.days
-        
+
         # Calculate the duration in weeks
         weeks = days // 7
-        
+
         # Calculate the duration in months
         months = days // 30
-        
+
         # Calculate the duration in years
         years = days // 365
 
@@ -60,7 +62,7 @@ class ProjectDetailView(DetailView):
             duration = f'{weeks} {"week" if weeks == 1 else "weeks"}'
         else:
             duration = f'{days} {"day" if days == 1 else "days"}'
-        
+
         return duration
 
 
@@ -122,7 +124,8 @@ class MessageView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["message"] = random.choice(Message.objects.all())
+        context["message"] = Message.objects.create(
+            message='In the canvas of our careers, strive for a pixel-perfect impact, where every detail matters and contributes to the larger picture of growth—both personal and societal. Just as each pixel shapes the image, every purposeful action and positive influence you create contributes to the masterpiece of a meaningful and impactful journey.') if not Message.objects.exists() else random.choice(Message.objects.all())
         context["form"] = MessageForm()
         context["tool"] = random.choice(['angle-tool', 'hammer', 'tools', 'ruler-combine',
                                         'color-filter', 'color-picker', 'frame-alt-empty', 'crop', 'component'])

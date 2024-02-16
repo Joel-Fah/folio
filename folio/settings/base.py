@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     
     'core',
-    'tinymce',
+    'django_summernote',
     'tailwind',
     'theme',
     'django_browser_reload',
@@ -148,23 +148,12 @@ STORAGES = {
     },
 }
 
-# TinyMCE
-TINYMCE_JS_URL = 'https://cdn.tiny.cloud/1/0ojmoo0qismstx45fnfsegx4ghvjn89ikerl6eqnb76r291b/tinymce/5/tinymce.min.js'
-TINYMCE_COMPRESSOR = False
-SECURE_REFERRER_POLICY = 'origin'
-TINYMCE_DEFAULT_CONFIG = {
-    "height": "500px",
-    # "width": "960px",
-    'theme': "silver",
-    "menubar": "file edit view insert format tools table help",
-    "plugins": "advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code "
-    "fullscreen insertdatetime media table paste code help wordcount spellchecker",
-    "toolbar": "undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft "
-    "aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist | forecolor "
-    "backcolor casechange permanentpen formatpainter removeformat | pagebreak | charmap emoticons | "
-    "fullscreen  preview save print | insertfile image media pageembed template link anchor codesample | "
-    "a11ycheck ltr rtl | showcomments addcomment code",
-    "custom_undo_redo_levels": 10,
-    "language": "en_US",  # To force a specific language instead of the Django current language.
+# Summernote
+SUMMERNOTE_THEME = 'bs5'  # Show summernote with Bootstrap5
+
+SUMMERNOTE_CONFIG = {
+    'iframe': True,
+    'summernote': {
+        'width': '250%',
+    }
 }
-TINYMCE_SPELLCHECKER = True

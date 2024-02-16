@@ -1,5 +1,4 @@
 from django.db import models
-from tinymce import models as tinymce_models
 from slugify import slugify
 
 # Create your models here.
@@ -12,7 +11,8 @@ class Project(models.Model):
         DEVELOPMENT = 'development', 'development'
     
     name = models.CharField(max_length = 150, blank=False, null=False)
-    content = tinymce_models.HTMLField(blank=True, null=True)
+    # content = tinymce_models.HTMLField(blank=True, null=True)
+    content = models.TextField(blank=True, null=True)
     client = models.CharField(max_length = 150)
     role = models.CharField(max_length = 150)
     link = models.URLField(max_length = 200, blank=True, null=True)
@@ -48,7 +48,7 @@ class Tag(models.Model):
 # About Page models
 class AcademicAchievement(models.Model):
     title = models.CharField(max_length=255)
-    description = tinymce_models.HTMLField()
+    description = models.TextField(blank=True, null=True)
     date_earned = models.DateField()
     institution = models.CharField(max_length=255)
     link = models.URLField(max_length = 200, blank=True, null=True)
@@ -62,7 +62,7 @@ class AcademicAchievement(models.Model):
     
 class Certification(models.Model):
     title = models.CharField(max_length=255)
-    description = tinymce_models.HTMLField()
+    description = models.TextField(blank=True, null=True)
     date_earned = models.DateField()
     organisation = models.CharField(max_length=255)
     image = models.ImageField(upload_to='achievements/certifications/', blank=True, null=True)
@@ -77,7 +77,7 @@ class Certification(models.Model):
 
 class Volunteering(models.Model):
     title = models.CharField(max_length=255)
-    description = tinymce_models.HTMLField()
+    description = models.TextField(blank=True, null=True)
     organisation = models.CharField(max_length=255)
     image = models.ImageField(upload_to='achievements/volunteering/', blank=True, null=True)
     link = models.URLField(max_length = 255, blank=True, null=True)
@@ -91,7 +91,7 @@ class Volunteering(models.Model):
     
 class Message(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True, default="Anonymous")
-    message = tinymce_models.HTMLField()
+    message = models.TextField(blank=True, null=True)
     social = models.URLField(max_length=255, blank=True, null=True)
     
     is_visible = models.BooleanField(default=True)

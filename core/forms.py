@@ -1,8 +1,36 @@
 from django import forms
 from django.forms.widgets import TextInput, URLInput, Textarea
 from .models import Message
+from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
+from django.conf import settings
+from django.urls import reverse
+from django.templatetags.static import static
+
 
 #  Create your forms here
+
+# Custom Summernote WYSIWIG specific to this form
+# class SummernoteModelAdminWithCustomToolbar(SummernoteWidget):
+#     def summernote_settings(self):
+#         summernote_settings = settings.SUMMERNOTE_CONFIG.get('summernote', {}).copy()
+#         lang = settings.SUMMERNOTE_CONFIG['summernote'].get('lang')
+#         if not lang:
+#             lang = 'en-US'
+#         summernote_settings.update({
+#             'lang': lang,
+#             'url': {
+#                 'language': static('summernote/lang/summernote-' + lang + '.min.js'),
+#                 'upload_attachment': reverse('django_summernote-upload_attachment'),
+#                 },
+#             'width': '100%',
+#             'height': '200px',
+#             'toolbar': [
+#                 ['font', ['bold', 'italic', 'underline', ]],
+#                 ['misc', ['link', 'undo', 'redo', ]],
+#             ],
+#             'js': ()
+#         })
+#         return summernote_settings
 
 class MessageForm(forms.ModelForm):
     
@@ -16,7 +44,7 @@ class MessageForm(forms.ModelForm):
                     'name': 'name',
                     'id': 'name',
                     'placeholder': 'Anonymous',
-                    'class': 'border border-hoverColor/50 rounded-lg bg-hoverColor/20 my-1 placeholder:text-yellowWhite/50 focus:ring-1'
+                    'class': 'rounded-lg text-darkBlue bg-white placeholder:text-darkBlue/50 focus:ring-1',
                 }
             ),
             
@@ -24,8 +52,8 @@ class MessageForm(forms.ModelForm):
                 attrs={
                     'name': 'social',
                     'id': 'social',
-                    'placeholder': 'https://x.com/FahDejon',
-                    'class': 'border border-hoverColor/50 rounded-lg bg-hoverColor/20 my-1 placeholder:text-yellowWhite/50 focus:ring-1'
+                    'placeholder': 'https://x.com/@username',
+                    'class': 'rounded-lg text-darkBlue bg-white placeholder:text-darkBlue/50 focus:ring-1',
                 }
             ),
             
@@ -35,7 +63,10 @@ class MessageForm(forms.ModelForm):
                     'id': 'message',
                     'placeholder': 'Write your message here...',
                     'maxlength': 300,
-                    'class': 'border border-hoverColor/50 rounded-lg bg-hoverColor/20 my-1 resize-none h-40 placeholder:text-yellowWhite/50 focus:ring-1'
+                    'cols': '',
+                    'rows': '',
+                    'style': 'height: 12rem; resize: none;',
+                    'class': 'rounded-lg text-darkBlue bg-white placeholder:text-darkBlue/50 focus:ring-1',
                 }
             ),
         }

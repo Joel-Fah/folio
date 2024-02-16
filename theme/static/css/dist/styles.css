@@ -863,6 +863,10 @@ select {
   left: 0px;
 }
 
+.left-64 {
+  left: 16rem;
+}
+
 .left-72 {
   left: 18rem;
 }
@@ -873,6 +877,10 @@ select {
 
 .right-10 {
   right: 2.5rem;
+}
+
+.right-64 {
+  right: 16rem;
 }
 
 .right-72 {
@@ -925,6 +933,10 @@ select {
 
 .top-\[80\%\] {
   top: 80%;
+}
+
+.z-0 {
+  z-index: 0;
 }
 
 .z-10 {
@@ -1336,6 +1348,18 @@ select {
   width: 100%;
 }
 
+.w-\[calc\(\)\] {
+  width: calc();
+}
+
+.w-\[calc\(100\%-20px\)\] {
+  width: calc(100% - 20px);
+}
+
+.w-\[calc\(100\%-50px\)\] {
+  width: calc(100% - 50px);
+}
+
 .min-w-20 {
   min-width: 5rem;
 }
@@ -1366,6 +1390,10 @@ select {
 
 .max-w-screen-xl {
   max-width: 1280px;
+}
+
+.flex-1 {
+  flex: 1 1 0%;
 }
 
 .flex-initial {
@@ -2458,8 +2486,17 @@ select {
   background-color: rgb(250 241 214 / 0.05);
 }
 
+.hover\:from-10\%:hover {
+  --tw-gradient-from-position: 10%;
+}
+
 .hover\:p-2:hover {
   padding: 0.5rem;
+}
+
+.hover\:text-blue-400:hover {
+  --tw-text-opacity: 1;
+  color: rgb(96 165 250 / var(--tw-text-opacity));
 }
 
 .hover\:text-hoverColor:hover {
@@ -2579,6 +2616,11 @@ select {
 @media not all and (min-width: 1024px) {
   .max-lg\:hidden {
     display: none;
+  }
+
+  .max-lg\:px-5 {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
 
   .max-lg\:px-8 {
@@ -2908,6 +2950,10 @@ select {
     display: none;
   }
 
+  .lg\:h-dvh {
+    height: 100dvh;
+  }
+
   .lg\:h-max {
     height: -moz-max-content;
     height: max-content;
@@ -2915,6 +2961,14 @@ select {
 
   .lg\:max-h-\[60\%\] {
     max-height: 60%;
+  }
+
+  .lg\:w-1\/4 {
+    width: 25%;
+  }
+
+  .lg\:w-3\/4 {
+    width: 75%;
   }
 
   .lg\:w-3\/5 {
@@ -2937,6 +2991,10 @@ select {
     width: 85%;
   }
 
+  .lg\:w-\[calc\(100\%-50px\)\] {
+    width: calc(100% - 50px);
+  }
+
   .lg\:max-w-\[80\%\] {
     max-width: 80%;
   }
@@ -2956,8 +3014,8 @@ select {
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 
-  .lg\:grid-cols-4 {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+  .lg\:grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 
   .lg\:flex-row {
@@ -2984,8 +3042,21 @@ select {
     gap: 5rem;
   }
 
+  .lg\:overflow-hidden {
+    overflow: hidden;
+  }
+
+  .lg\:overflow-y-scroll {
+    overflow-y: scroll;
+  }
+
   .lg\:p-0 {
     padding: 0px;
+  }
+
+  .lg\:px-3 {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
   }
 
   .lg\:py-12 {

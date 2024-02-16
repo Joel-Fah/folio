@@ -3,6 +3,7 @@ from django.contrib.admin.widgets import AdminFileWidget
 from django.utils.html import format_html
 from django.db import models
 from .models import Project, Tag, AcademicAchievement, Certification, Volunteering, Message
+from django_summernote.admin import SummernoteModelAdmin
 
 # Register your models here.
 
@@ -22,7 +23,7 @@ class CustomAdminFileWidget(AdminFileWidget):
         result.append(super().render(name, value, attrs, renderer))
         return format_html("".join(result))
     
-class ProjectAdmin(admin.ModelAdmin):
+class ProjectAdmin(SummernoteModelAdmin):
     list_filter = ['name']
     search_fields = ['name']
     list_display = ['id', 'name', 'is_visible', 'link']
@@ -30,6 +31,8 @@ class ProjectAdmin(admin.ModelAdmin):
     formfield_overrides = {
         models.ImageField: {"widget": CustomAdminFileWidget}
     }
+    
+    summernote_fields = ('content')
     
 class TagAdmin(admin.ModelAdmin):
     model = Tag
@@ -41,12 +44,14 @@ class TagAdmin(admin.ModelAdmin):
     def get_project_name(self, obj):
         return obj.project.name
     
-class AcademicAchievementAdmin(admin.ModelAdmin):
+class AcademicAchievementAdmin(SummernoteModelAdmin):
     list_display = ['id', 'title', 'institution', 'is_visible']
     search_fields = ['title', 'institution']
     list_filter = ['title', 'institution']
+    
+    summernote_fields = ('description')
 
-class CertificationAdmin(admin.ModelAdmin):
+class CertificationAdmin(SummernoteModelAdmin):
     list_display = ['id', 'title', 'organisation', 'is_visible']
     search_fields = ['title', 'organisation']
     list_filter = ['title', 'organisation']
@@ -54,8 +59,10 @@ class CertificationAdmin(admin.ModelAdmin):
     formfield_overrides = {
         models.ImageField: {"widget": CustomAdminFileWidget}
     }
+    
+    summernote_fields = ('description')
 
-class VolunteeringAdmin(admin.ModelAdmin):
+class VolunteeringAdmin(SummernoteModelAdmin):
     list_display = ['id', 'title', 'organisation', 'is_visible']
     search_fields = ['title', 'organisation']
     list_filter = ['title', 'organisation']
@@ -64,10 +71,14 @@ class VolunteeringAdmin(admin.ModelAdmin):
         models.ImageField: {"widget": CustomAdminFileWidget}
     }
     
-class MessageAdmin(admin.ModelAdmin):
+    summernote_fields = ('description')
+    
+class MessageAdmin(SummernoteModelAdmin):
     list_display = ['id', 'name', 'is_visible']
     search_fields = ['name', 'message']
     list_filter = ['name']
+    
+    summernote_fields = ('message')
 
 # Register in admin dashboard
 admin.site.register(Project, ProjectAdmin)

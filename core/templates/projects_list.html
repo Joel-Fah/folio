@@ -102,8 +102,8 @@ Projects
                     </div>
                 </a>
 
-                {% if forloop.counter|modulo:2 %}
-                <hr class="w-full border-yellowWhite/50 my-5">
+                {% if not forloop.counter|modulo:2 %}
+                <hr class="w-full lg:w-[calc(100%-50px)] mx-auto border-yellowWhite/50 my-5">
                 {% endif %}
                 {% endif %}
                 {% endfor %}
