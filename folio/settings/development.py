@@ -28,5 +28,5 @@ DATABASES = {
         'PORT': 5432,
     },
     
-    'production': dj_database_url.parse("postgres://folio_tqs7_user:iWrGoA3cNhQz7K4h16XWM69cbIHlIyWy@dpg-cn600l8cmk4c73dtf17g-a.oregon-postgres.render.com/folio_tqs7"),
+    'production': dj_database_url.parse("postgres://folio_pw83_user:XBathhJkVCCUbQkBK5ZywjzJZg8rJYaK@dpg-cnahoetjm4es73c89ri0-a.oregon-postgres.render.com/folio_pw83"),
 }
