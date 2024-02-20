@@ -8,3 +8,6 @@ The intention of this portfolio website was to make it dynamic so as to enable e
 - HTML v5
 - Tailwind CSS v3.4.0 with the help of Tailwind UI and Flowbite
 - And some sleepless night, caring and love.
+
+## **Motivation**
+Strive for a pixel-perfect impact in your career, where every detail contributes to personal and societal growth. Each purposeful action and positive influence shapes a meaningful and impactful journey, resembling a masterpiece on the canvas of our careers.
