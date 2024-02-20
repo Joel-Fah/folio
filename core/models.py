@@ -51,6 +51,7 @@ class AcademicAchievement(models.Model):
     description = models.TextField(blank=True, null=True)
     date_earned = models.DateField()
     institution = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='achievements/academics/', blank=True, null=True)
     link = models.URLField(max_length = 200, blank=True, null=True)
     
     is_visible = models.BooleanField(default=True)

@@ -11,6 +11,17 @@
   {{ object.name }}
 {% endblock title %}
 
+<!-- Additional style -->
+{% block styles %}
+  <style>
+    ul.project {
+      list-style-type: '📦 ' !important;
+      list-style-position: inside !important;
+      padding-left: 10px !important;
+    }
+  </style>
+{% endblock styles %}
+
 <!-- Header Section -->
 {% block header %}
     {% include "components/header_alt.html" %}
@@ -50,7 +61,13 @@
 
       <div class="flex justify-between items-center rounded-lg bg-primaryColor/10 p-2 px-4 text-sm capitalize">
         <span class="text-yellowWhite/50">Category:</span>
-        <span>{{ object.category }}</span>
+        {% if object.category == 'design' %}
+          <span>ui.ux design</span>
+          {% elif object.category == 'graphics' %}
+          <span>graphics</span>
+          {% else %}
+          <span>{{object.category}}</span>
+        {% endif %}
       </div>
 
       <div class="flex justify-between items-center rounded-lg bg-primaryColor/10 p-2 px-4 text-sm">
@@ -70,7 +87,7 @@
 
       <div class="flex justify-between items-center rounded-lg bg-primaryColor/10 p-2 px-4 text-sm">
         <span class="text-yellowWhite/50">Duration:</span>
-        <span>{{ duration }}</span>
+        <span>{{ object.started_at|timesince:object.ended_at }}</span>
       </div>
 
       <div class="flex gap-4 items-center max-lg:hidden p-2 px-4 border-2 border-dashed border-hoverColor bg-hoverColor/10 rounded-xl">
@@ -87,6 +104,14 @@
     <!-- Scrollable container -->
     <div class="flex-1 lg:overflow-y-scroll lg:px-3">
       <!-- Your content -->
+      <div class="flex gap-2">
+        {% for tag in tags %}
+          <small class="bg-primaryColor/10 rounded-md px-3"> {{ tag }} </small>
+        {% endfor %}
+      </div>
+
+      <div class="h-4"></div>
+
       {{ object.content|safe }}
     </div>
   </div>

@@ -21,14 +21,14 @@ Projects
 <div id="top_projects"
     class="container max-w-[95%] lg:max-w-screen-xl min-h-dvh mx-auto my-20 bg-center bg-cover bg-[url(https://s3-alpha-sig.figma.com/img/60e3/b9f6/ac74023fae9d7a2f1ac0267ee0f441e4?Expires=1705881600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Aq6e946y1zFGzAJI8yB1CcQ1rC6ranEhvYHoVd0-8KYc4ZPdD18nDSansz35AQPpFAO6VoTd2vpnngA9Rc5PRl56~TQMtJ3H7siMULbfwF66kaemq1EhmDMnUimLt8Z5v5PVQg2abzQAWyVw5tdSpIJjulzZ5eOA3BSlAyZoRghv-ZhNyUrzQf7svK8La~OMhGkth5nh1nkBOpiGOZvLtmr49hNHdrIl~1WHzppfl4X-xqMEBLt5D~gj44J19oJlsWxdsV2Wo4ifGCdQ8koOxPsRxo3ihf6rHL5WHrw0zx6Z7gsr3N6x2ADimjwN~F2SXMJ5XOrDETO2S3w--EvVlQ__)]">
 
-    <div class="w-full rounded-lg shadow" data-aos="fade-down" data-aos-delay="300" data-aos-duration="600">
+    <div class="w-full rounded-lg" data-aos="fade-down" data-aos-delay="300" data-aos-duration="600">
         <!-- Navigation -->
-        <ul class="flex flex-wrap max-sm:items-center max-sm:justify-evenly text-sm lg:text-lg font-medium text-center border-2 border-yellowWhite/50 rounded-3xl bg-navbarBarBg shadow-2xl"
+        <ul class="flex max-sm:items-center max-sm:justify-evenly text-sm lg:text-lg font-medium text-center border-2 border-yellowWhite/50 rounded-3xl bg-navbarBarBg shadow-2xl"
             id="defaultTab" data-tabs-toggle="#defaultTabContent" role="tablist">
             <li class="">
                 <button id="design-tab" data-tabs-target="#design" type="button" role="tab" aria-controls="design"
                     aria-selected="true"
-                    class="flex items-center gap-2 p-3 md:p-4 text-primaryColor rounded-ss-lg hover:bg-primaryColor/10">
+                    class="flex flex-col md:flex-row items-start md:items-center gap-2 p-3 md:p-4 text-primaryColor rounded-tl-3xl rounded-bl-3xl hover:bg-primaryColor/10">
                     <i class="iconoir-frame-select text-xl"></i>
                     ui.ux design
                 </button>
@@ -36,7 +36,7 @@ Projects
             <li class="">
                 <button id="graphics-tab" data-tabs-target="#graphics" type="button" role="tab" aria-controls="graphics"
                     aria-selected="false"
-                    class="flex items-center gap-2 p-3 md:p-4 text-primaryColor hover:text-yellowWhite/60 hover:bg-primaryColor/10">
+                    class="flex flex-col md:flex-row items-start md:items-center gap-2 p-3 md:p-4 text-primaryColor hover:text-yellowWhite/60 hover:bg-primaryColor/10">
                     <i class="iconoir-design-pencil text-xl"></i>
                     graphics
                 </button>
@@ -44,7 +44,7 @@ Projects
             <li class="">
                 <button id="development-tab" data-tabs-target="#development" type="button" role="tab"
                     aria-controls="development" aria-selected="false"
-                    class="flex items-center gap-2 p-3 md:p-4 text-primaryColor hover:text-yellowWhite/60 hover:bg-primaryColor/10">
+                    class="flex flex-col md:flex-row items-start md:items-center gap-2 p-3 md:p-4 text-primaryColor hover:text-yellowWhite/60 hover:bg-primaryColor/10">
                     <i class="iconoir-code text-xl"></i>
                     development
                 </button>
@@ -56,6 +56,11 @@ Projects
             <div class="hidden p-4 rounded-b-3xl w-[95%] mx-auto md:p-8"
                 id="design" role="tabpanel" aria-labelledby="design-tab">
 
+                {% if ui_design.count == 0 %}
+                <!-- Return empty state... -->
+                {% include "empty.html" %}
+
+                {% else %}
                 {% for project in object_list %}
                 {% if project.is_visible and project.category == 'design' %}
                 <a href="{% url 'core:details' project.id project.slug %}" class="page-link flex flex-col gap-3 md:gap-0 md:flex-row justify-between p-0 hover:p-2 md:hover:p-3 hover:bg-yellowWhite/5 rounded-2xl bg-transparent backdrop-blur-sm hover:shadow-2xl transition-all duration-300 ease-in-out">
@@ -107,6 +112,9 @@ Projects
                 {% endif %}
                 {% endif %}
                 {% endfor %}
+                {% endif %}
+
+                
 
             </div>
 
@@ -114,6 +122,13 @@ Projects
             <div class="hidden p-4 rounded-b-3xl w-[95%] mx-auto md:p-8"
                 id="graphics" role="tabpanel" aria-labelledby="graphics-tab">
 
+                {% if graphics.count == 0 %}
+                <!-- Return empty state... -->
+                {% include "empty.html" %}
+
+                {% else %}
+
+                <!-- Return default graphic works -->
                 {% for project in object_list %}
                 {% if project.is_visible and project.category == 'graphics' %}
                 <a href="{% url 'core:details' project.id project.slug %}" class="page-link flex flex-col gap-3 md:gap-0 md:flex-row justify-between p-0 hover:p-2 md:hover:p-3 hover:bg-yellowWhite/5 rounded-2xl bg-transparent backdrop-blur-sm hover:shadow-2xl transition-all duration-300 ease-in-out">
@@ -165,6 +180,7 @@ Projects
                 {% endif %}
                 {% endif %}
                 {% endfor %}
+                {% endif %}
 
             </div>
 
@@ -172,6 +188,11 @@ Projects
             <div class="hidden p-4 rounded-b-3xl w-[95%] mx-auto md:p-8"
                 id="development" role="tabpanel" aria-labelledby="development-tab">
 
+                {% if development.count == 0 %}
+                <!-- Return empty state... -->
+                {% include "empty.html" %}
+
+                {% else %}
                 {% for project in object_list %}
                 {% if project.is_visible and project.category == 'development' %}
                 <a href="{% url 'core:details' project.id project.slug %}" class="page-link flex flex-col gap-3 md:gap-0 md:flex-row justify-between p-0 hover:p-2 md:hover:p-3 hover:bg-yellowWhite/5 rounded-2xl bg-transparent backdrop-blur-sm hover:shadow-2xl transition-all duration-300 ease-in-out">
@@ -223,6 +244,7 @@ Projects
                 {% endif %}
                 {% endif %}
                 {% endfor %}
+                {% endif %}
 
             </div>
         </div>

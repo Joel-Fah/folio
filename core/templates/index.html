@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static tailwind_tags %}
+{% load static tailwind_tags my_tags %}
 {% load static %}
 
 <!-- Meta tags -->
@@ -16,12 +16,36 @@ Home
 {% block styles %}
 <!-- Tailwind Elements CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
+<style>
+  .skills img {
+    -webkit-box-reflect: below 5px linear-gradient(transparent, transparent, #0004);
+    transform-origin: center;
+    transform: perspective(800px) rotateY(25deg) skewY(-10deg);
+    transition: 0.5s;
+  }
+
+  .skills:hover img {
+    opacity: 0.3;
+  }
+  
+  .skills img:hover {
+    transform: perspective(800px) rotateY(0deg) skewY(0);
+    transform: translateY(-30px);
+    scale: 1.1;
+    opacity: 1;
+  }
+</style>
 {% endblock styles %}
 
 <!-- Header -->
 {% block header %}
 {% include "components/header_scrollspy.html" %}
 {% endblock header %}
+
+<!-- Body styles -->
+{% block body_styles %}
+bg-[url(https://github.com/Joel-Fah/images/blob/main/about_bg.png?raw=true)] bg-no-repeat bg-contain bg-top
+{% endblock body_styles %}
 
 <!-- Body of the page -->
 {% block body %}
@@ -97,7 +121,6 @@ Home
         data-te-carousel-indicators>
         {% if projects.count > 1 %}
         {% for project in projects %}
-        {% if project.is_visible %}
         <button 
           type="button" 
           data-te-target="#carouselExampleCrossfade" 
@@ -107,15 +130,19 @@ Home
           aria-current="true"
           aria-label="Slide {{ forloop.counter }}">
         </button>
-        {% endif %}
         {% endfor %}
         {% endif %}
       </div>
 
       <!--Carousel items-->
       <div class="relative w-full overflow-hidden after:clear-both after:block after:content-['']">
+        {% if projects.count == 0 %}
+          <!-- Return empty state... -->
+          {% include "empty.html" %}
+
+        {% else %}
+
         {% for project in projects %}
-        {% if project.is_visible %}
         <div
           class="relative float-left -mr-[100%] w-full !transform-none opacity-0 transition-opacity duration-[600ms] ease-in-out motion-reduce:transition-none"
           data-te-carousel-fade
@@ -127,7 +154,7 @@ Home
             alt="{{ project.name }}" />
 
           <div
-            class="absolute items-end top-0 bottom-0 right-0 left-0 inset-x-[15%] hidden py-10 pb-14 md:flex md:flex-col md:items-center md:justify-end bg-gradient-to-b from-[rgb(12,4,38,0)] via-[rgb(12,4,38,0.5)] to-[rgb(12,4,38,1)] from-60% hover:from-10%">
+            class="hidden absolute items-end top-0 bottom-0 right-0 left-0 inset-x-[15%] py-10 pb-14 md:flex md:flex-col md:items-center md:justify-end bg-gradient-to-b from-[rgb(12,4,38,0)] via-[rgb(12,4,38,0.5)] to-[rgb(12,4,38,1)] from-60% hover:from-10%">
             <h3 class="font-medium m-0 p-0 text-lg lg:text-2xl my-2">{{ project.name }}</h3>
             <a href="{% url 'core:details' project.id project.slug %}"
               class="page-link group hover:gap-5 inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg bg-hoverColor hover:bg-blue-800 focus:ring-gray-700 transition-all duration-300 ease-in-out">
@@ -137,8 +164,8 @@ Home
             </a>
           </div>
         </div>
-        {% endif %}
         {% endfor %}
+        {% endif %}
 
         <!--Carousel controls - prev item-->
         {% if projects.count > 1 %}
@@ -168,6 +195,24 @@ Home
             class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Next</span>
         </button>
         {% endif %}
+      </div>
+    </div>
+  </section>
+
+  <!-- Tools -->
+  <section id="tools" class="section col-span-12 py-5 mb-5 lg:mb-10 md:py-12">
+    <div class="flex flex-col gap-5">
+      <div class="flex items-center gap-5 my-2.5 lg:my-7 mx-0 w-full">
+        <h2 class="font-bold m-0 p-0 text-2xl lg:text-4xl">I am familiar with...</h2>
+      </div>
+
+      <div class="skills grid grid-cols-3 lg:grid-cols-6 gap-5 items-center justify-center lg:justify-normal p-5">
+        <img class="motion-reduce:animate-bounce w-full object-cover rounded-xl ring-2 ring-transparent hover:ring-2 hover:ring-[#151051] " src="{% static 'images/skills/figma.png' %}" alt="Bootstrap">
+        <img class="motion-reduce:animate-bounce w-full object-cover rounded-xl ring-2 ring-transparent hover:ring-2 hover:ring-[#9A0B61] " src="{% static 'images/skills/adobe_xd.png' %}" alt="Django">
+        <img class="motion-reduce:animate-bounce w-full object-cover rounded-xl ring-2 ring-transparent hover:ring-2 hover:ring-[#322862] " src="{% static 'images/skills/tailwind.png' %}" alt="Figma">
+        <img class="motion-reduce:animate-bounce w-full object-cover rounded-xl ring-2 ring-transparent hover:ring-2 hover:ring-[#28234A] " src="{% static 'images/skills/bootstrap.png' %}" alt="Flutter">
+        <img class="motion-reduce:animate-bounce w-full object-cover rounded-xl ring-2 ring-transparent hover:ring-2 hover:ring-[#0038CA] " src="{% static 'images/skills/flutter.png' %}" alt="Adobe XD">
+        <img class="motion-reduce:animate-bounce w-full object-cover rounded-xl ring-2 ring-transparent hover:ring-2 hover:ring-[#1E7A4D] " src="{% static 'images/skills/django.png' %}" alt="">
       </div>
     </div>
   </section>

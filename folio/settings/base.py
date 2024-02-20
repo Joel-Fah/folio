@@ -149,11 +149,22 @@ STORAGES = {
 }
 
 # Summernote
-SUMMERNOTE_THEME = 'bs5'  # Show summernote with Bootstrap5
+SUMMERNOTE_THEME = 'bs4'  # Show summernote with Bootstrap4
 
 SUMMERNOTE_CONFIG = {
     'iframe': True,
     'summernote': {
+        'airMode': False,
         'width': '250%',
-    }
+        'toolbar': [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear']],
+            ['fontstyle', ['fontname', 'fontsizeunit']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph', 'height']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video', 'hr']],
+            ['view', ['fullscreen', 'codeview', 'help']],
+        ],
+    },
 }

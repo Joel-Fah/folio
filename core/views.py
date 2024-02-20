@@ -17,7 +17,7 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['projects'] = Project.objects.all()
+        context['projects'] = Project.objects.filter(is_visible=True)
         context['tags'] = Tag.objects.all()
         return context
 
@@ -27,43 +27,14 @@ class ProjectDetailView(DetailView):
     model = Project
 
     def get_queryset(self):
-        return Project.objects.filter(id=self.kwargs['id'], slug=self.kwargs['slug'])
+        return Project.objects.filter(id=self.kwargs['id'], slug=self.kwargs['slug'], is_visible=True)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         project = Project.objects.get(
             id=self.kwargs['id'], slug=self.kwargs['slug'])
-        context["duration"] = self.calculate_duration(
-            project.started_at, project.ended_at)
+        context['tags'] = [tag.name.lower() for tag in Tag.objects.filter(project_id=project.id)]
         return context
-
-    def calculate_duration(self, started_at, ended_at):
-        # Calculate the difference between the end and start dates
-        difference = ended_at - started_at
-
-        # Calculate the duration in days
-        days = difference.days
-
-        # Calculate the duration in weeks
-        weeks = days // 7
-
-        # Calculate the duration in months
-        months = days // 30
-
-        # Calculate the duration in years
-        years = days // 365
-
-        # Determine the lowest readable value
-        if years > 0:
-            duration = f'{years} {"year" if years == 1 else "years"}'
-        elif months > 0:
-            duration = f'{months} {"month" if months == 1 else "months"}'
-        elif weeks > 0:
-            duration = f'{weeks} {"week" if weeks == 1 else "weeks"}'
-        else:
-            duration = f'{days} {"day" if days == 1 else "days"}'
-
-        return duration
 
 
 class WorksView(ListView):
@@ -72,7 +43,10 @@ class WorksView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["tags"] = Tag.objects.all()
+        context['tags'] = Tag.objects.all()
+        context['ui_design'] = Project.objects.filter(category='design')
+        context['graphics'] = Project.objects.filter(category='graphics')
+        context['development'] = Project.objects.filter(category='development')
         return context
 
 
@@ -85,9 +59,9 @@ class AboutView(TemplateView):
                                         'color-filter', 'color-picker', 'frame-alt-empty', 'crop', 'component'])
         context["emoji"] = random.choice(
             ['emoji-satisfied', 'emoji-surprise-alt', 'emoji-surprise', 'emoji-blink-left', 'emoji-blink-right'])
-        context['academics'] = AcademicAchievement.objects.all()
-        context['certifications'] = Certification.objects.all()
-        context['volunteerings'] = Volunteering.objects.all()
+        context['academics'] = AcademicAchievement.objects.filter(is_visible=True)
+        context['certifications'] = Certification.objects.filter(is_visible=True)
+        context['volunteerings'] = Volunteering.objects.filter(is_visible=True)
         return context
 
 
@@ -125,7 +99,7 @@ class MessageView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["message"] = Message.objects.create(
-            message='In the canvas of our careers, strive for a pixel-perfect impact, where every detail matters and contributes to the larger picture of growth—both personal and societal. Just as each pixel shapes the image, every purposeful action and positive influence you create contributes to the masterpiece of a meaningful and impactful journey.') if not Message.objects.exists() else random.choice(Message.objects.all())
+            message='In the canvas of our careers, strive for a pixel-perfect impact, where every detail matters and contributes to the larger picture of growth—both personal and societal. Just as each pixel shapes the image, every purposeful action and positive influence you create contributes to the masterpiece of a meaningful and impactful journey.') if not Message.objects.exists() else random.choice(Message.objects.filter(is_visible=True))
         context["form"] = MessageForm()
         context["tool"] = random.choice(['angle-tool', 'hammer', 'tools', 'ruler-combine',
                                         'color-filter', 'color-picker', 'frame-alt-empty', 'crop', 'component'])
