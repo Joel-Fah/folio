@@ -149,6 +149,8 @@ STORAGES = {
 }
 
 # Summernote
+MAX_IMAGE_PIXELS = int(5 * 1024 * 1024)
+                       
 SUMMERNOTE_THEME = 'bs4'  # Show summernote with Bootstrap4
 
 SUMMERNOTE_CONFIG = {
@@ -167,4 +169,5 @@ SUMMERNOTE_CONFIG = {
             ['view', ['fullscreen', 'codeview', 'help']],
         ],
     },
+    'attachment_filesize_limit': MAX_IMAGE_PIXELS,
 }
