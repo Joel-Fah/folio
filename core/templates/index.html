@@ -104,7 +104,13 @@ bg-[url(https://github.com/Joel-Fah/images/blob/main/about_bg.png?raw=true)] bg-
 
   <section id="works" class="section col-span-12 py-5 md:py-12" data-aos="fade-up" data-aos-delay="100" data-aos-duration="600">
     <div class="flex items-center gap-5 justify-between my-7">
-      <h2 class="font-bold m-0 p-0 whitespace-nowrap text-2xl lg:text-4xl">View works</h2>
+      <div class="flex flex-col">
+        <h2 class="font-bold m-0 p-0 whitespace-nowrap text-2xl lg:text-4xl">View works</h2>
+        <a href="{% url 'core:projects' %}" class="flex gap-2 text-hoverColor text-sm hover:text-blue-500 transition-all duration-300 ease-in-out md:hidden">
+          See projects
+          <i class="iconoir-arrow-down-right text-lg"></i>
+        </a>
+      </div>
       <hr class="w-full border-yellowWhite/50">
 
       {% if projects.count > 1 %}
@@ -261,7 +267,7 @@ bg-[url(https://github.com/Joel-Fah/images/blob/main/about_bg.png?raw=true)] bg-
         <div class="">
           <a href="{% url 'core:about' %}"
             class="page-link flex flex-row py-5 px-7 items-center justify-center gap-2 font-medium rounded-full bg-primaryColor/10 ease-in-out duration-300 hover:gap-4">
-            Feels interesting, read more.
+            Sounds interesting, read more.
             <i class="iconoir-dot-arrow-right text-2xl"></i>
           </a>
         </div>
