@@ -30,3 +30,14 @@ DATABASES = {
     
     'production': dj_database_url.parse("postgres://folio_pw83_user:XBathhJkVCCUbQkBK5ZywjzJZg8rJYaK@dpg-cnahoetjm4es73c89ri0-a.oregon-postgres.render.com/folio_pw83"),
 }
+
+# Add compression and caching support for whitenoise
+
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
