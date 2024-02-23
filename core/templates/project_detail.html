@@ -81,13 +81,13 @@
       </div>
 
       <div class="flex justify-between items-center rounded-lg bg-primaryColor/10 p-2 px-4 text-sm">
-        <span class="text-yellowWhite/50">Last updated on:</span>
-        <span>{{ object.updated_at }}</span>
+        <span class="text-yellowWhite/50">Duration:</span>
+        <span>{{ object.started_at|timesince:object.ended_at }}</span>
       </div>
 
       <div class="flex justify-between items-center rounded-lg bg-primaryColor/10 p-2 px-4 text-sm">
-        <span class="text-yellowWhite/50">Duration:</span>
-        <span>{{ object.started_at|timesince:object.ended_at }}</span>
+        <span class="text-yellowWhite/50">Last updated on:</span>
+        <span>{{ object.updated_at }}</span>
       </div>
 
       <div class="flex gap-4 items-center max-lg:hidden p-2 px-4 border-2 border-dashed border-hoverColor bg-hoverColor/10 rounded-xl">
