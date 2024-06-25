@@ -21,7 +21,16 @@ SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_KEY = os.getenv("SUPABASE_KEY")
 SUPABASE_BUCKET_NAME = os.getenv("SUPABASE_BUCKET_NAME")
 
-DEFAULT_FILE_STORAGE = 'core.supabase_storage.SupabaseStorage'
+# DEFAULT_FILE_STORAGE = 'core.supabase_storage.SupabaseStorage'
+
+STORAGES = {
+    "default": {
+        "BACKEND": "core.supabase_storage.SupabaseStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "core.supabase_storage.SupabaseStorage",
+    },
+}
 
 # Supabase media storage management
 # DEFAULT_FILE_STORAGE = 'django_storage_supabase.supabase'
