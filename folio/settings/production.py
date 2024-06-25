@@ -25,10 +25,10 @@ SUPABASE_BUCKET_NAME = os.getenv("SUPABASE_BUCKET_NAME")
 
 STORAGES = {
     "default": {
-        "BACKEND": "core.supabase_storage.SupabaseStorage",
+        "BACKEND": "storage.SupabaseStorage",
     },
     "staticfiles": {
-        "BACKEND": "core.supabase_storage.SupabaseStorage",
+        "BACKEND": "storage.SupabaseStorage",
     },
 }
 
