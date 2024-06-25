@@ -12,10 +12,10 @@ class Project(models.Model):
     
     name = models.CharField(max_length = 150, blank=False, null=False)
     # content = tinymce_models.HTMLField(blank=True, null=True)
-    content = models.TextField(blank=True, null=True)
-    client = models.CharField(max_length = 150)
-    role = models.CharField(max_length = 150)
-    link = models.URLField(max_length = 200, blank=True, null=True)
+    content = models.TextField(blank=True, null=True, help_text='Add <b>class="project"</b> to your <ul> elements if any')
+    client = models.CharField(max_length = 150, blank=True, null=True, help_text='Leave blank if none')
+    role = models.CharField(max_length = 150, blank=True, null=True, help_text='Leave blank if none')
+    link = models.URLField(max_length = 200, blank=True, null=True, help_text='Leave blank if none')
     thumbnail = models.ImageField(upload_to='thumbnails/')
     category = models.CharField(max_length=255, choices=Filters.choices, default=Filters.DESIGN)
     

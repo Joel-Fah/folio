@@ -14,21 +14,14 @@ ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(" ")
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.parse(os.getenv("DATABASE_URL"))
+    'default': dj_database_url.parse(os.getenv("DATABASE_URL_SUPABASE"))
 }
 
-# AWS S3 media storage management
-AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
-AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
-AWS_STORAGE_BUCKET_NAME = os.getenv("AWS_STORAGE_BUCKET_NAME")
-AWS_S3_SIGNATURE_NAME = os.getenv("AWS_S3_SIGNATURE_NAME"),
-AWS_S3_REGION_NAME = os.getenv("AWS_S3_REGION_NAME")
-AWS_S3_ADDRESSING_STYLE = "virtual"
-AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL =  None
-AWS_S3_VERITY = True
-AWS_QUERYSTRING_AUTH = False
-DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_KEY = os.getenv("SUPABASE_KEY")
+SUPABASE_BUCKET_NAME = os.getenv("SUPABASE_BUCKET_NAME")
+
+DEFAULT_FILE_STORAGE = 'folio.core.supabase_storage.SupabaseStorage'
 
 # Supabase media storage management
 # DEFAULT_FILE_STORAGE = 'django_storage_supabase.supabase'
