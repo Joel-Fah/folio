@@ -1,5 +1,3 @@
-# storage.py
-
 import os
 from django.conf import settings
 from django.core.files.storage import Storage
@@ -37,29 +35,28 @@ class SupabaseStorage(Storage):
     def delete(self, name):
         """Delete the specified file from storage."""
         response = self.client.storage.from_(self.bucket_name).remove([name])
-        if response.get('status_code') != 200:
+        if response.status_code != 200:
             raise Exception(f"Failed to delete file {name} from Supabase storage.")
 
     def exists(self, name):
         """Check if the specified file exists in storage."""
         response = self.client.storage.from_(self.bucket_name).list()
-        for file in response.get('data', []):
-            if file['name'] == name:
-                return True
+        if response.status_code == 200:
+            for file in response.json():
+                if file['name'] == name:
+                    return True
         return False
 
     def size(self, name):
         """Return the size of the specified file."""
         response = self.client.storage.from_(self.bucket_name).list()
-        for file in response.get('data', []):
-            if file['name'] == name:
-                return file['size']
+        if response.status_code == 200:
+            for file in response.json():
+                if file['name'] == name:
+                    return file['size']
         return 0
 
     def url(self, name):
         """Return the URL of the specified file."""
         response = self.client.storage.from_(self.bucket_name).get_public_url(name)
-        if response.get('data'):
-            return response['data']['publicURL']
-        else:
-            raise Exception(f"Failed to get URL for file {name} from Supabase storage.")
+        return response
