@@ -1,62 +1,32 @@
 import os
 from django.conf import settings
 from django.core.files.storage import Storage
-from django.core.files.base import ContentFile
-from supabase import create_client, Client
+from supabase import create_client
 
 class SupabaseStorage(Storage):
-    def __init__(self):
-        self.supabase_url = settings.SUPABASE_URL
-        self.supabase_key = settings.SUPABASE_KEY
-        self.bucket_name = settings.SUPABASE_BUCKET_NAME
-        self.client: Client = create_client(self.supabase_url, self.supabase_key)
+    def __init__(self, bucket_name=settings.SUPABASE_BUCKET_NAME, **kwargs):
+        self.bucket_name = bucket_name
+        self.supabase = create_client(settings.SUPABASE_URL, settings.SUPABASE_KEY)
+        self.storage_client = self.supabase.storage.from_(self.bucket_name)
 
-    def _open(self, name, mode='rb'):
-        """Retrieve the specified file from storage."""
-        response = self.client.storage.from_(self.bucket_name).download(name)
-        if response.status_code == 200:
-            return ContentFile(response.content)
-        else:
-            raise FileNotFoundError(f"File {name} not found in Supabase storage.")
+    def _open(self, name, mode="rb"):
+        # Implement the method to open a file from Supabase
+        pass
 
     def _save(self, name, content):
-        """Save a file to Supabase storage."""
-        path = os.path.join('/tmp', name)
-        with open(path, 'wb') as f:
-            f.write(content.read())
-
-        response = self.client.storage.from_(self.bucket_name).upload(name, path)
-        os.remove(path)
-        if response.get('status_code') == 200:
-            return name
-        else:
-            raise Exception(f"Failed to upload file {name} to Supabase storage.")
-
-    def delete(self, name):
-        """Delete the specified file from storage."""
-        response = self.client.storage.from_(self.bucket_name).remove([name])
-        if response.status_code != 200:
-            raise Exception(f"Failed to delete file {name} from Supabase storage.")
+        # Implement the method to save a file to Supabase
+        content_file = content.file
+        content_file.seek(0)  # Move the file pointer to the beginning
+        content_bytes = content_file.read()
+        data = self.supabase.storage.from_(self.bucket_name).upload(
+            name, content_bytes, {"content-type": content.content_type}
+        )
+        return data.json()["Key"]  # name/path of the file
 
     def exists(self, name):
-        """Check if the specified file exists in storage."""
-        response = self.client.storage.from_(self.bucket_name).list()
-        if response.status_code == 200:
-            for file in response.json():
-                if file['name'] == name:
-                    return True
-        return False
-
-    def size(self, name):
-        """Return the size of the specified file."""
-        response = self.client.storage.from_(self.bucket_name).list()
-        if response.status_code == 200:
-            for file in response.json():
-                if file['name'] == name:
-                    return file['size']
-        return 0
+        # Implement the method to check if a file exists in Supabase
+        pass
 
     def url(self, name):
-        """Return the URL of the specified file."""
-        response = self.client.storage.from_(self.bucket_name).get_public_url(name)
-        return response
+        # Implement the method to return the URL for a file in Supabase
+        return f"{settings.SUPABASE_URL}/storage/v1/object/public/{name}"
