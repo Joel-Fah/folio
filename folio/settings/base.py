@@ -137,7 +137,6 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
 # Summernote
 MAX_IMAGE_PIXELS = int(5 * 1024 * 1024)
                        
