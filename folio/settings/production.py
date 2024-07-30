@@ -17,20 +17,7 @@ DATABASES = {
     'default': dj_database_url.parse(os.getenv("DATABASE_URL_SUPABASE"))
 }
 
-SUPABASE_URL = os.getenv("SUPABASE_URL")
-SUPABASE_KEY = os.getenv("SUPABASE_KEY")
-SUPABASE_BUCKET_NAME = os.getenv("SUPABASE_BUCKET_NAME")
-
 # DEFAULT_FILE_STORAGE = 'core.supabase_storage.SupabaseStorage'
-
-STORAGES = {
-    "default": {
-        "BACKEND": "storage.SupabaseStorage",
-    },
-    "staticfiles": {
-        "BACKEND": "storage.SupabaseStorage",
-    },
-}
 
 # Supabase media storage management
 # DEFAULT_FILE_STORAGE = 'django_storage_supabase.supabase'
